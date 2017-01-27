@@ -1,0 +1,627 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="my/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+<h1>Finally, git made simple</h1>
+<h3>Oredev 2016</h3>
+				</section>
+
+<section>
+	<h3>what is git?</h3>
+	<p>&nbsp;</p>
+	<p>
+		<span class="fragment">S</span>
+		<span class="fragment">C</span>
+		<span class="fragment">M</span>
+	</p>
+</section>
+
+<section>
+	<h3>what is SCM?</h3>
+	<blockquote>
+		<span class="fragment">Source</span>
+		<span class="fragment"> of Complete</span>
+		<span class="fragment"> Mortification</span>
+	</blockquote>
+	<div style="min-height: 300px;">
+	<p class="fragment collapsible">Live planning slow-fail mode, a novel</p>
+
+    <pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
+Author: <span style="text-decoration: line-through">REDACTED</span>
+Date:   Fri Nov 4 17:06:46 2016 -0700
+
+    live-planning slow-fail mode
+
+</pre><pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
+Author: <span style="text-decoration: line-through">REDACTED</span>
+Date:   Fri Nov 4 20:47:59 2016 -0700
+
+    fix tests
+
+</pre><pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
+Author: <span style="text-decoration: line-through">REDACTED</span>
+Date:   Fri Nov 4 23:08:13 2016 -0700
+
+    Up JVM heap size for tests to prevent OOM
+
+    (Deja vu moment - we do this every year
+     or so ...)
+
+</pre><pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
+Author: <span style="text-decoration: line-through">REDACTED</span>
+Date:   Fri Nov 4 23:32:03 2016 -0700
+
+    more test fixes
+
+</pre><pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
+Author: <span style="text-decoration: line-through">REDACTED</span>
+Date:   Fri Nov 4 23:37:44 2016 -0700
+
+    moar test fixes
+
+</pre><pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
+Author: <span style="text-decoration: line-through">REDACTED</span>
+Date:   Sat Nov 5 00:09:31 2016 -0700
+
+    slow-fail live-planning
+
+    ... finally
+
+</pre><pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
+Author: <span style="color: lightpink">kenegozi</span>
+Date:   Sat Nov 5 00:09:31 2016 -0700
+
+    slow-fail live-planning
+
+    ... finally
+    
+</pre></div>
+</section>
+<section>
+	<h3>what is git?</h3>
+	<blockquote class="fragment">a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.</blockquote>
+	<p>&nbsp;</p>
+	<p class="fragment"><small>it's in the <a href="https://github.com/git/git/blob/master/README.md">README</a> so it must be true</small></p>
+</section>
+
+<section>
+	<h3>what is git?</h3>
+	<ul>
+	<li>
+		<span class="fragment">on a good day: </span>
+		<span class="fragment"><em>g</em>lobal <em>i</em>nformation <em>t</em>racker</span>
+	</li>
+
+	<li>
+		<span class="fragment">on a bad day: </span>
+		<span class="fragment"><em>g</em>oddamn <em>i</em>diotic <em>t</em>ruckload-of-sh*t</span>
+	</li>
+	</ul>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p class="fragment"><small>also in the <a href="https://github.com/git/git/blob/master/README.md">README</a></small></p>
+</section>
+
+<section>
+	<small>now seriousy</small>
+	<h3 class="fragment">what is git?</h3>
+	<p class="fragment collapsible">replicable, versionable, highly-available, fault-tolerant, eventually-consistent, distributed object database</p>
+	<p class="fragment">replicable, versionable, highly-available, fault-tolerant, eventually-consistent, distributed <strike>object database</strike> source control manager</p>
+	<p>&nbsp;</p>
+	<p class="fragment">finally git made simple <span class="fragment">?</span></p>
+	<p>
+		<span class="fragment" style="font-size: 300%;">L</span>
+		<span class="fragment" style="font-size: 300%;">O</span>
+		<span class="fragment" style="font-size: 300%;">L</span>
+	</p>
+</section>
+<section>
+	<p class="fragment">have you ever met a git pro?</p>
+	<p class="fragment collapsible"><img src="my/linus-torvalds.png"></p>
+	<p>&nbsp;</p>
+	<p class="fragment">me? <span class="fragment">using git 10-&epsilon; years </span> <span class="fragment">!</span> <span class="fragment"> . . . still not a pro</span></p>
+	<p class="fragment">
+		<span>yet for me it's been working better than</span> 
+		<span class="fragment">printouts</span>
+		<span class="fragment">zip files</span>
+		<span class="fragment">SourceSafe</span>
+		<span class="fragment">SourceGear</span>
+		<span class="fragment">Mercurial</span>
+		<span class="fragment">Subversion</span>
+		<span class="fragment">TFS</span>
+	</p>
+
+</section>
+<section>
+	<small>so</small>
+	<h3 class="fragment">what is git?</h3>
+	<p class="fragment collapsible">a clever way of using branches for tracking and managing commits</p>
+	<p class="fragment">a clever way of using <strike>branches</strike> post-it notes for tracking and managing <strike>commits</strike> changes</p>
+	<p>&nbsp;</p>
+	<p><small class="fragment">not in the README</small></p>
+	<p><small class="fragment">not in any official documentation</small></p>
+	<p><small class="fragment">not accurate</small></p>
+</section>
+
+<section>
+<section>
+	<h3>what is a commit?</h3>
+	<p class="fragment">a point in time</p>
+	<p class="fragment">
+		what is the current content?<br/>
+		how did we get here?
+	</p>
+</section>
+
+<section>
+	<h3>commits</h3>
+	<div style="min-height: 450px;">
+	<div class="fragment current-visible collapsible">
+<pre>
+
+
+   .
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+   A
+   ↑
+   .
+   └── a.txt
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+   A    <-    B
+   ↑          ↑
+   .          .
+   └── a.txt  ├── a.txt
+              └── b.txt
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+   A    <-    B    <-    C
+   ↑          ↑          ↑
+   .          .          .
+   └── a.txt  ├── a.txt  ├── a.txt
+              └── b.txt  ├── b.txt
+                         └── c.txt
+</pre></div>
+</div>
+</section>
+</section>
+
+<section>
+	<h3>what is git?</h3>
+	<blockquote class="fragment">
+		DAG (Directed Acyclic Graph) of commits representing a progression of content deltas through history
+	</blockquote>
+	<p>&nbsp;</p>
+	<p class="fragment">how are we doing on "made simple"?</p>
+</section>
+<section>
+<section>
+	<h3>what is a branch?</h3>
+	<blockquote class="fragment">a movable post-it note referencing a specific commit in the graph</blockquote>
+</section>
+<section>
+	<h3>branches</h3>
+	<div style="min-height: 450px;">
+	<div class="fragment current-visible collapsible">
+<pre>
+master
+  ↓
+  A
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+       master
+         ↓
+  A  <-  B
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+              master
+                ↓
+  A  <-  B  <-  C
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+              slave
+                ↓
+  A  <-  B  <-  C
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+              derp
+                ↓
+  A  <-  B  <-  C
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+              master
+                ↓
+  A  <-  B  <-  C
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+              master
+                ↓
+  A  <-  B  <-  C
+                ↑
+              feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+              master
+                ↓
+  A  <-  B  <-  C  <-  D
+                       ↑    
+                     feature
+</pre></div>
+</div>
+</section>
+</section>
+<section>
+<section>
+	<h3>what is a merge?</h3>
+	<p class="fragment">moving a branch pointer to a different commit, covering current and merged-with branch history</p>
+</section>
+	<section>
+	<h3>what is a merge?</h3>
+	<pre style="font-size: 60%;"><div class="fragment" >$ git man merge</div>
+<div class="fragment">--ff
+ When the merge resolves as a fast-forward, only update the branch
+ pointer, without creating a merge commit. This is the default
+ behavior.
+
+--no-ff
+ Create a merge commit even when the merge resolves as a fast-forward.
+ This is the default behaviour when merging an annotated (and possibly
+ signed) tag.
+
+--ff-only
+ Refuse to merge and exit with a non-zero status unless the current
+ HEAD is already up-to-date or the merge can be resolved as a
+ fast-forward.</div></pre>
+	</section>
+	<section>
+	<h4>fast forward</h4>
+	<div style="min-height: 450px;">
+	<div class="fragment current-visible collapsible">
+<pre>
+              master
+                ↓
+  A  <-  B  <-  C  <-  D
+                       ↑    
+                     feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+                     master
+                       ↓
+  A  <-  B  <-  C  <-  D
+                       ↑    
+                     feature
+
+[master] $ git merge feature --ff-only
+</pre></div>
+</div>
+</section>
+	<section>
+	<h4>non fast forward</h4>
+	<div style="min-height: 450px;">
+	<div class="fragment current-visible collapsible">
+<pre>
+            master
+              ↓
+A  <-  B  <-  C  <-  D
+                     ↑    
+                   feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+                   master
+                     ↓
+A  <-  B  <-  C  <-  E
+                ↖ 
+                  D
+                  ↑    
+                feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+                   master
+                     ↓
+A  <-  B  <-  C  <-  E
+                ↖      ↖ 
+                  D  <-  F
+                         ↑    
+                      feature
+
+[feature] $ git merge master
+</pre></div>
+
+	<div class="fragment current-visible collapsible">
+<pre>
+                   
+                     
+A  <-  B  <-  C  <-  E    master
+                ↖      ↖   ↙
+                  D  <-  F
+                         ↑    
+                      feature
+
+[master] $ git merge feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+                          master
+                            ↓
+A  <-  B  <-  C  <-  E  <-  F
+                ↖         ↗ ↑
+                  ↖= D =↗  feature   
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+                           master
+                             ↓
+A  <-  B  <-  C  <-  E   <-  G
+                ↖      ↖   ↙
+                  D  <-  F
+                         ↑    
+                      feature
+
+[master] $ git checkout E
+[master] $ git merge feature --no-ff
+</pre></div>
+</div>
+	</section>
+	<section>
+	<h3>what is a merge?</h3>
+	<pre style="font-size: 60%;"><div>$ git man merge</div>
+<div>--ff
+ When the merge resolves as a fast-forward, only update the branch
+ pointer, without creating a merge commit. This is the default
+ behavior.
+
+--no-ff
+ Create a merge commit even when the merge resolves as a fast-forward.
+ This is the default behaviour when merging an annotated (and possibly
+ signed) tag.
+
+--ff-only
+ Refuse to merge and exit with a non-zero status unless the current
+ HEAD is already up-to-date or the merge can be resolved as a
+ fast-forward.</div></pre>
+	</section>
+
+</section>
+
+<section>
+<section>
+	<h3>what is a rebase?</h3>
+	<p class="fragment">serializing (and rewriting) history</p>
+	<p class="fragment">working concurrenty, exploring linearly</p>
+</section>
+<section>
+	<h3>why rebase?</h3>
+	<p class="fragment"><img alt="git not ff derp" src="my/git-no-ff-derp.gif"></p>
+</section>
+<section>
+	<h3>what is a rebase?</h3>
+	<div style="min-height: 450px;">
+	<div class="fragment current-visible collapsible">
+<pre>
+                   master
+                     ↓
+A  <-  B  <-  C  <-  E
+                ↖ 
+                  D
+                  ↑    
+                feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+		<p>added a.txt</p>
+		<p>added b.txt</p>
+		<p>added c.txt</p>
+		<p>added d.txt</p>
+		<p>added e.txt</p>
+	</div>
+	<div class="fragment current-visible collapsible">
+	<p>&nbsp;</p>
+	<p>but what if ...</p>
+	</div>
+	<div class="fragment current-visible collapsible">
+		<p>added a.txt</p>
+		<p>added b.txt</p>
+		<p>added c.txt</p>
+		<p>added <span style="color:lightpink">e.txt</span></p>
+		<p>added <span style="color:lightpink">d.txt</span></p>
+	</div>
+	<div class="fragment current-visible collapsible"><pre>
+                   master
+                     ↓
+A  <-  B  <-  C  <-  E  <-  D'
+                ↖           ↑                     
+                  D      feature 
+
+[feature] $ git rebase master
+</pre></div>
+	<div class="fragment current-visible collapsible"><pre>
+                   master
+                     ↓
+A  <-  B  <-  C  <-  E  <-  D'
+                ↖           ↑                     
+                  D      feature 
+
+D.content == D'.content
+D.anscestry !== D'.anscestry
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+                          master
+                            ↓
+A  <-  B  <-  C  <-  E  <-  D'
+                ↖           ↑                     
+                  D      feature 
+
+[master] $ git merge feature --ff-only
+</pre></div>
+</div>
+</section>
+<section>
+	<h3>rebase and contextual diff</h3>
+	<div style="min-height: 450px;">
+	<div class="fragment current-visible collapsible">
+<pre>
+            master
+              ↓
+A  <-  B  <-  F
+  ↖ 
+    C  <-  D  <-  E
+                  ↑    
+                feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+            master
+              ↓
+A  <-  B  <-  F  <-  C'
+  ↖                    ↖
+    C  <-  D  <-  E     feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+            master
+              ↓
+A  <-  B  <-  F  <-  C' <-  D'
+  ↖                         ↑
+    C  <-  D  <-  E      feature
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+            master
+              ↓
+A  <-  B  <-  F  <-  C' <-  D' <-  E'
+  ↖                                ↑
+    C  <-  D  <-  E             feature
+</pre></div>
+</div>
+</section>
+</section>
+
+<section>
+	<section>
+	<h3>more references</h3>
+	<h5>also post-it notes</h5>
+	<ul>
+	<li class="fragment">
+		branch - moves with commits, merge, rebase, etc.
+	</li>
+	<li class="fragment">
+		tag - static (e.g. identify a release)
+	</li>
+	<li class="fragment">
+		HEAD - the current checked-out commit
+	</li>
+	<li class="fragment">
+		relative - HEAD^^^ is HEAD-3, HEAD~2 is HEAD-2
+	</li>
+	</ul>
+	</section>
+	<section>
+	<h3>more references</h3>
+	<pre>
+[somebranch] $ checkout REF
+  => HEAD = REF
+[current] $ checkout COMMIT_HASH 
+  => HEAD = &amp;COMMIT_HASH
+[current] $ checkout -b feature 
+  => var feature = current
+[current] $ reset REF 
+  => HEAD = current = REF
+[current] $ reset COMMIT 
+  => HEAD = current = &amp;COMMIT
+	</pre>
+	</section>
+</section>
+
+<section>
+	<h3>one last concept</h3>
+	<p>index (or staging area) - were we group changes to files and preparing them for a single commit</p>
+</section>
+
+<section>
+<section>
+	<h3>demo</h3>
+	<p class="fragment"><img alt="best git client is git" src="my/best-git-client-is-git.png" /></p>
+	<p class="fragment"><code>git gui</code> and <code>gitk</code> are your friends</p>
+	<p class="fragment">three-way merge tools (KDIFF3, p4merge, etc)</p>
+</section>
+<section>
+	<h3>demo</h3>
+</section>
+</section>
+<section>
+	<h3>recap</h3>
+	<p class="fragment">git is great</p>
+	<p class="fragment">history is graph of commits</p>
+	<p class="fragment">branches and tags are post-it notes</p>
+	<p class="fragment">keep calm and gitk</p>
+</section>
+<section>
+	<p>I'm Ken, and I'll be here all week!</p>
+	<p>&nbsp;</p>
+	<p>@kenegozi<br/>
+	<a href="http://kenegozi.com">http://kenegozi.com</a><br/>
+	github.com/kenegozi </p>
+</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				fragments: true,
+				minScale: 1,
+				maxScale: 1,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+Oredev - Finally, git made simple
+http://oredev.org/2016/sessions/finally-git-made-simple
+Wed. 11/9/16 5p-5:40p
+
+
+Set user and email!! (use mail@kenegozi.com)
+git config --global user.name "Ken Egozi"
+git config --global user.email "omg@omg.omg"
+
+
+
+
+Having used git almost exclusively since 2008, and helping with git adoptions with many teams in startups and in mega tech corporations, I know how transitioning to git from more traditional source control systems (or using it as the first one) can sometimes be intimidating. Sometimes developers who have been using it for a while find themselves still afraid to do much with it because they cannot wrap their mind around it.
+I came up with a simple set of analogies, methods, tricks and workflows, that can make the vast majority of the daily routine with git, simple, understandable, and enjoyable.
+And if you end up not learning much, simply reset --hard and clean -xdf :
+
+
+
+mkdir gitdemo
+cd gitdemo
+git init
+echo "hello a" > a.txt
+git gui (add and commit)
+gitk
+
+echo "hello b" > b.txt
+git add b.txt && git commit -m "added b"
+gitk
+
+git checkout -b feature
+addfile "c"
+
+git checkout master
+
+addfile "d"
+
+git checkout feature
+
+git rebase master
+
+git checkout master
+
+git merge feature --ff-only
+
+git branch -d feature
+
+git checkout -b feature
+vim a.txt   # $i again
+git gui # "added 'again' to a"
+
+git checkout master
+vim a.txt   # dwi halla 
+git add . && git commit -m "redigerade a"
+
+git checkout feature
+git rebase mainline
+git mergetool
+git rebase --continue
+
+git checkout master
+git merge --ff-only feature
+
+
+vim a.txt # DERP
+git reset --hard HEAD
+
+git checkout HEAD^^^
+git tag v1.0
+git checkout -b v1.0-patch1
+git cherry-pick / gitk
+
+git clean -xdf
+
