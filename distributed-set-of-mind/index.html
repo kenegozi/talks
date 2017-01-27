@@ -1,0 +1,510 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Distributed set of mind</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="my/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+<h1>distributed set of mind</h1>
+<h3>Oredev 2016</h3>
+				</section>
+
+<!-- DEMO -->
+<section>
+	<!--
+	<section>
+		<h3>demo</h3>
+		<div class="fragment">
+			<iframe width="560" height="315" src="https://www.youtube.com/	embed/-tqhVdRMMk0?t=49s&rel=0" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<p class="fragment">
+			<small>the built in demo track preloaded on my Ensoniq SD-1</small>
+		</p>
+	</section>
+	-->
+	<section>
+		<h3>demo</h3>
+		<video class="fragment" width="560" height="315" controls>
+			<source src="my/Ensoniq-SD-1-demo.mp4" type="video/mp4" />
+		</video>
+		<p class="fragment">
+			<small>the built in demo track preloaded on my Ensoniq SD-1, 
+			the best sequencer / synth ever</small>
+		</p>
+		<p class="fragment">
+			<small>uploaded to YouTube to help sell it. I now have a Yamaha digital piano instead</small>
+		</p>
+		<p class="fragment">
+			<code>my.age *= 2</code>
+		</p>
+	</section>
+	<section>
+		<h3>did you like it?</h3>
+		<p class="fragment">
+			<img src="my/like-sd1-demo.png" />
+		</p>
+	</section>
+</section>
+
+<!-- HOW MANY -->
+<section>
+	<section>
+		<h3>how many</h3>
+		<p class="fragment">numbers in N?</p>
+		<p>
+			<span class="fragment">a whole bunch</span><br/><br/>
+			<span class="fragment">א0</span>
+			<span class="fragment">&infin;</span>
+		</p>
+	</section>
+	<section>
+		<h3>how many</h3>
+		<p>numbers in distributed systems?</p>
+		<div style="min-height: 300px">
+		<p class="fragment collapsible">
+			<span style="font-size: 400px">4</span>
+		</p>
+		<p class="fragment collapsible">
+			1<br/>
+			<img style="height: 250px" src="my/numbers-1.png">
+		</p>		
+		<p class="fragment collapsible">
+			2<br/>
+			<img style="height: 250px" src="my/numbers-2.png">
+		</p>		
+		<p class="fragment collapsible">
+			many<br/>
+			<img style="height: 250px" src="my/numbers-3.png">
+		</p>		
+		<p class="fragment collapsible">
+			many<br/>
+			<img style="height: 250px" src="my/numbers-3-partitioned.png">
+		</p>		
+		<p class="fragment collapsible">
+			boatload<br/>
+			<img style="height: 250px" src="my/crazy-couple.jpg">
+		</p>
+		<p class="fragment collapsible">
+			<img style="height: 250px" src="my/numbers-wrong.png">
+		</p>
+		<p class="fragment">
+			<img style="height: 250px" src="my/numbers-right.png">
+		</p>
+		</div>
+	</section>
+</section>
+
+<!-- LIKE -->
+<section>
+	<section>
+		<h3>like it</h3>
+		<p class="fragment">
+			<img src="my/like-sd1-demo.png" />
+		</p>
+		<div style="min-height: 150px;">
+
+<pre class="fragment collapsible">
+thumbsUp.setColorTo(BLUE)
+</pre>
+<pre class="fragment collapsible">
+thumbsUp.setColorTo(BLUE)
+likesCounter += 1
+</pre>
+		</div>
+	</section>
+</section>
+<section>
+	<section>
+		<h3>once upon a time</h3>
+		<p class="fragment">video sharing service, a novel</p>
+		<span class="fragment">social</span>
+		<span class="fragment"> / mobile</span>
+		<span class="fragment"> / local</span>
+		<p class="fragment"><small>
+			not actually a video sharing service
+		</small>
+		</p>
+	</section>
+	<section>
+		<h3>do you like it?</h3>
+		<pre class="fragment">
+v = videos.get(videoID)
+v.likesCount += 1
+db.store(v)</pre>
+		<p>
+			<span class="fragment">knock knock</span>&nbsp;&nbsp;
+			<span class="fragment">race condition!</span>&nbsp;&nbsp;
+			<span class="fragment">who's there?</span>
+		</p>
+	</section>
+	<section>
+		<h3>problem solved</h3>
+		<pre class="fragment">
+// TODO: not safe, we need to add 
+// transaction
+v = videos.get(videoID)
+v.likesCount += 1
+db.store(v)</pre>
+	</section>
+	<section>
+		<h3>problem solved</h3>
+		<pre class="fragment" style="font-size: 80%">
+UPDATE videos 
+SET likesCount = likesCount+1 
+WHERE video_id = $videoID</pre>
+	</section>
+	<section>
+		<h3>the plot thickens</h3>
+		<p class="fragment">like counters, like counters everywhere</p>
+		<pre class="fragment collapsible" style="font-size: 80%">
+UPDATE videos 
+SET likesCount = likesCount+1 
+WHERE video_id = $videoID
+
+UPDATE users 
+SET likesCount = likesCount+1 
+WHERE user_id = $userID
+
+UPDATE users 
+SET likesCount = likesCount+1 
+WHERE user_id = $video.OwnerID</pre>
+		<pre class="fragment" style="font-size: 80%">
+BEGIN TRANSACTION
+UPDATE videos ... $videoID
+UPDATE users ... $userID
+UPDATE users ... $video.OwnerID
+COMMIT TRANSACTION</pre>
+		<p class="fragment">WIN!!!</p>
+		<p>
+			<span class="fragment">knock knock</span>&nbsp;&nbsp;
+			<span class="fragment">who's there?</span>
+		</p>
+		<p class="fragment collapsible" style="color: lightpink">DEADLOCK</p>
+	</section>
+	<section>
+		<h3>growth</h3>
+		<p class="fragment">
+			<code>if (likesCount % 1000 == 0) sendEmail()</code>
+		</p>
+		<p>
+			<span class="fragment">email must be sent!</span>
+			<span class="fragment">but not more than once</span>
+		</p>
+		<p class="fragment">
+			partitions, replication, consultants, distributed transaction, background threads, workers, consultants, timers, distributed locks, consultants
+		</p>
+	</section>
+	<section>
+		<h5>rule #1</h5>
+		<h4 class="fragment">there is going to be a queue</h4>
+	</section>
+	<section>
+		<h5>rule #1b</h5>
+		<h4 class="fragment">there already is a queue</h4>
+	</section>
+</section>
+<section>
+	<section>
+	<h3>fallacies</h3>
+	<p class="fragment">
+		<a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing</a> <br/><br/>
+		<a href="http://www.rgoarchitects.com/Files/fallacies.pdf">http://www.rgoarchitects.com/Files/fallacies.pdf</a>
+	</p>
+	</section>
+	<section>
+		<h3>false</h3>
+		<blockquote class="fragment">A chain is as strong as its weakest link</blockquote>
+	</section>
+	<section>
+		<h3>9s</h3>
+		<p>
+			<span class="fragment">99%</span><br/>
+			<span class="fragment collapsible">X hours per year?</span><br/>
+			<span class="fragment">3.65 <b>days</b> per year</span> <br/>
+			<span class="fragment collapsible">Xms per minute?</span><br/>
+			<span class="fragment">600ms per minute</span>
+		</p>
+	</section>
+	<section>
+		<h3>9s</h3>
+		<p>
+			<span class="fragment">99.9%</span><br/>
+			<span class="fragment collapsible">X hours per year?</span><br/>
+			<span class="fragment">8.76 hours per year</span> <br/>
+			<span class="fragment collapsible">Xms per minute?</span><br/>
+			<span class="fragment">60ms per minute</span>
+		</p>
+	</section>
+	<section>
+		<h3>9s</h3>
+		<p class="fragment">
+			<span>99% allow 600ms/min</span><br/>
+			<span">99.9% allow 60ms/min</span>
+		</p>
+		<p class="fragment">
+			young pause ~150ms every ~10secs
+		</p>
+	</section>
+	<section>
+		<h3>9s</h3>
+		<blockquote class="fragment">Lies, damned lies, and statistics</blockquote>
+		<p class="fragment">
+			<img src="my/small-mesh.png" style="height: 150px;">
+		</p>
+		<p class="fragment">
+			Systemic failures are a thing
+		</p>
+		<p>
+			<span class="fragment">OS update</span><br/>
+			<span class="fragment">self-replicating bug</span><br/>
+			<span class="fragment">SSL expiration</span><br/>
+		</p>
+	</section>
+</section>
+<section>
+	<h3>magic</h3>
+	<p class="fragment">for web scale apps, we need a web scale database</p>
+	<div style="min-height: 200px">
+		<p class="fragment collapsible">
+			<small>auto sharding!</small><br/>
+			5%&nbsp;&nbsp;&nbsp;5%
+		</p>
+		<p class="fragment collapsible">
+			<small>after a few months</small><br/>
+			50%&nbsp;&nbsp;&nbsp;55%
+		</p>
+		<p class="fragment collapsible">
+			<small>a couple of months more</small><br/>
+			85%&nbsp;&nbsp;&nbsp;95%
+		</p>
+		<p class="fragment collapsible">
+			<small>a couple of weeks later</small><br/>
+			90%&nbsp;&nbsp;&nbsp;100%
+		</p>
+		<p class="fragment collapsible">
+			<small>auto sharding!</small><br/>
+			90%&nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;0%
+		</p>
+		<p class="fragment collapsible">
+			<small>auto sharding?</small><br/>
+			89%&nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;1%
+		</p>
+		<p class="fragment collapsible">
+			<small>auto sharding :(</small><br/>
+			88%&nbsp;&nbsp;&nbsp;100%&nbsp;&nbsp;&nbsp;2%
+		</p>
+		<p class="fragment collapsible">
+			<small>auto sharding @#!$@#$</small><br/>
+			88%&nbsp;&nbsp;&nbsp;99%&nbsp;&nbsp;&nbsp;3%
+		</p>
+		<p class="fragment collapsible">
+		many hours later ...
+		</p>
+		<p class="fragment collapsible">
+			<small>auto sharding!</small><br/>
+			63%&nbsp;&nbsp;&nbsp;64%&nbsp;&nbsp;&nbsp;63%
+		</p>
+	</div>
+</section>
+<section>
+	<section>
+		<h5>rule #3</h5>
+		<h4 class="fragment">If you think it could fail - it might<br/> If you are sure it would not fail, then it most certainly will</h4>
+	</section>
+</section>
+<section>
+	<h3>you've got mail</h3>
+	<p class="fragment">delivery guarantees</p>
+	<ul style="margin: 0">
+		<li class="fragment">at most once</li>
+		<li class="fragment">at least once</li>
+		<li class="fragment">exactly once</li>
+	</ul>
+	<ul style="margin: 0">
+		<li class="fragment"> - queue</li>
+		<li class="fragment"> - durable queue</li>
+		<li class="fragment"> - unicorn</li>
+	</ul>
+</section>
+<section>
+	<h3>simple is better</h3>
+	<p class="fragment">the simpler the cheaper and the more reliable</p>
+	<p class="fragment">no tx, no ordering, soft guarantees, eventual consistency</p>
+</section>
+<section>
+	<h3>upside?</h3>
+</section>
+<section>
+	<section>
+		<h3>false</h3>
+		<blockquote class="fragment">A chain is as strong as its weakest link</blockquote>
+		<p class="fragment">if it is built from single points of failuers</p>
+		<p class="fragment">redundencize all the things</p>
+		<div style="min-height: 200px">
+			<p class="fragment collapsible">
+				<img src="my/weakest-link.png" style="height: 150px"/>
+			</p>
+			<p class="fragment collapsible">
+				<img src="my/not-so-weak-now.png" style="height: 150px"/>
+			</p>
+			<p class="fragment">
+				<img src="my/spider-web.jpg" style="height: 150px"/>
+			</p>
+		</div>
+	</section>
+	<section>
+		<h3>9s</h3>
+		<p class="fragment">break temporal dependence</p>
+		<p>
+			<span class="fragment">queues - embrace them</span><br/>
+			<small class="fragment">the simpler the cheaper and the more reliable</small>
+		</p>
+		<p>
+			<span class="fragment">minimize systemic failure impact</span><br/>
+			<small class="fragment">shuffle sharding</small>
+			<small class="fragment">, regionalization</small>
+		</p>
+	</section>
+	<section>
+		<h3>consistency</h3>
+		<p class="fragment">vertical context</p>
+		<p class="fragment">local concistency</p>
+		<blockquote class="fragment">(per Special relativity) - observed order of events depends on frame of reference</blockquote>
+		<blockquote class="fragment">It’s usually causal ordering that we’re after anyway. People who say otherwise don’t quite realize that there is no now in a distributed system</blockquote>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h3>back again</h3>
+		<p class="fragment">
+			<img src="my/like-sd1-demo.png" />
+		</p>
+	</section>
+	<section>
+		<h3>local consistency</h3>
+		<p class="fragment">strong consistency can be bad here!</p>
+	</section>
+	<section>
+		<h3>vertical consistency</h3>
+		<p class="fragment">perhaps trade availability?</p>
+		<p class="fragment">money donations instead of likes</p>
+	</section>
+	<section>
+		<h3>redundancy</h3>
+		<p>
+			<span class="fragment">write to a queue in Azure</span><br/>
+			<span class="fragment">or to a queue in another Azure region</span><br/>
+			<span class="fragment">or to a queue in AWS</span><br />
+			<span class="fragment">then fan in</span> <br/>
+			<img class="fragment" src="my/not-so-weak-now.png" style="height: 100px;">
+		</p>
+	</section>
+	<section>
+		<h3>decoupling</h3>
+		<p class="fragment">fan-out / subscriptions / event-sourcing</p>
+		<p class="fragment">contextual and bounded tradeoffs</p>
+	</section>
+	<section>
+		<h3>idempotency</h3>
+		<p class="fragment">eliminating duplications</p>
+		<p class="fragment">capture user's intent</p>
+	</section>
+	<section>
+		<h3>requirements</h3>
+		<p class="fragment">talk with the customer, listen and explain</p>
+	</section>
+	<section>
+	<h3>magic - explained</h3>
+	<p class="fragment">for web scale apps, we need a web scale architecture</p>
+	<div style="min-height: 200px">
+		<p class="fragment collapsible">
+			<small>auto sharding with over-subscription!</small><br/>
+			1%/1%/1%/1%/1%&nbsp;&nbsp;&nbsp;1%/1%/1%/1%/1%
+		</p>
+		<p class="fragment collapsible">
+			<small>auto sharding with over-subscription!</small><br/>
+			20%/20%/20%/20%/20%&nbsp;&nbsp;&nbsp;20%/20%/20%/20%/20%
+		</p>
+		<p class="fragment">
+			<small>auto sharding with over-subscription!</small><br/>
+			20%/20%/20%&nbsp;&nbsp;&nbsp;20%/20%/20%/20%&nbsp;&nbsp;&nbsp;20%/20%/20%
+		</p>
+	</div>
+	<p class="fragment">
+		monitor, practice failures
+	</p>
+	<p class="fragment">
+		consistent / rendezvous / jump hashing
+	</p>
+	</section>
+</section>
+<section>
+	<h3>recap</h3>
+	<ul style="margin: 0">
+	<li class="fragment">embrace failure</li>
+	<li class="fragment">compose complex systems using simple blocks</li>
+	<li class="fragment">capture intent, align with the customer</li>
+	<li class="fragment">numbers</li>
+	<li class="fragment">embrace failure</li>
+	</ul>
+</section>
+<section>
+	<h3>readings</h3>
+	<p><a href="https://www.awsarchitectureblog.com/">https://www.awsarchitectureblog.com/</a></p>
+	<p><a href="http://udidahan.com/?blog=true">http://udidahan.com/?blog=true</a></p>
+	<p><a href="http://arnon.me/">http://arnon.me/</a>
+</section>
+<section>
+	<p>I'm Ken, and I'll be here all week!</p>
+	<p>&nbsp;</p>
+	<p>@kenegozi<br/>
+	<a href="http://kenegozi.com">http://kenegozi.com</a><br/>
+	github.com/kenegozi </p>
+</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				fragments: true,
+				minScale: 1,
+				maxScale: 1,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

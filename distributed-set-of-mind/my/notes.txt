@@ -1,0 +1,158 @@
+Oredev - A Distributed Set of Mind
+http://oredev.org/2016/sessions/a-distributed-set-of-mind
+Friday 11/11/16 12:20p-1p
+
+
+A distributed system can be more available than its minimally available part. A whole can be larger than the sum of its parts.
+Distributed systems are hard, but are even more difficult if you are not thinking about them with a distributed set of mind.
+When building such systems, we have to be aware of the fallacies of distributed computing. We must think about failure scenarios and account for them.
+We will cover real-world scenarios and try to apply a few surprisingly simple techniques that might have helped avoiding distributed systems failures.
+
+- how to solve problems
+- how to think about solutions
+
+- CAP
+
+in the face of partition, choose A or C
+
+- act CAP
+
+
+- act one - stand in line
+
+- act one - numbers
+
+
+
+How many numbers in N?
+&infin;
+1,2,3,.....,N
+
+How many numbers in distributed systems?
+1,2,lots
+
+
+
+
+- automatic sharding
+> two nodes
+> 
+
+
+
+# cause based non-profit donations 
+- list non-profit grouped by cause
+- show cause details
+- follow cause news
+- donate
+> authorize CC transaction
+> record the donation to the group
+> breakdown donation to group members
+  > validate each group member
+  > capture payment
+  > email the non-profit (on donation or problem)
+  > email the donor on error
+> email to donor
+> notify group followers
+
+   and report donation to group members
+> notify 
+
+table
+                  simple     simplistic
+    complicated                 X
+    complex        Excite
+
+simple solution to a simple problem
+complicated solution to simple problem
+complicated solution to a complicated problem
+simple soution to a simple problem
+make the problem go away
+
+
+Difficult to test
+difficult to debug
+
+difficult to
+
+- embrace failure
+- compose complex systems using simple blocks
+- capture intent, align with business/product
+- numbers
+- embrace failure
+
+fallacies
+- fallacies of network
+- fallacy of queues
+- fallacy of failures
+
+message delivery modes
+- at most once
+- at least once
+- exactly once, a.k.a fairy dust
+- idempotency
+
+failure modes
+- 
+
+perspective and perception
+- percepted consistency
+- causal ordering trumps now
+
+
+
+I like this
+- 
+- thumbsup.setColorTo(BLUE)
+
+v = videos.get(videoID)
+v.likeCount += 1
+db.store(v)
+
+
+video.likeCount += 1
+me.likedVideos.add(video_id)
+videos.likers.add(me)
+for (follower in me.followers U video.followers) {
+	follower.email("{me} liked {video}")
+}
+for (playlist in playlists.for_video(video_id))
+
+this.
+
+- you tube like on a new vs a popular video
+- capturing
+
+
+About to start my session titled “A distributed set of mind” @oredev #speakerselfie 
+
+
+If you think it could fail - it might. If you are sure it would not fail, then it most certainly will.
+
+
+A chain is as strong as its weakest link. Also, a chain is consisted of single points of failure.
+Idempotent -> Redundant -> reliability?
+SOA Patterns!!!!!!
+--
+(quote) It’s usually causal ordering that we’re after anyway. People who say otherwise don’t quite realize that there is no now in a distributed system.
+99*99
+Though that's not how statistics work, because it is not 100 independent
+e.g. SSL certs crap across DC, meteor shower, buggy software with a time bomb exception.
+Time bomb exception in tests
+The rules of distributed systems:
+
+The first rule of distributed systems is: there is going to be a queue there somewhere
+The second rule is: 	.
+The outcome : you might be inadvertently created a non optimal queue by mistake, welcome to the world of hurt.
+Quote "Imagine you're in a conference and the server is burning"
+Smartest people because you picked the best session
+#speakerselfie
+Special relativity - observed order of events depends on frame o reference
+observed order of events depends on thread, server, network, latency, etc etc etc
+Quote: "It's not that we started with a perfect architecture, because we didn't. Actually our current architecture is not perfect. it will evolve with time as we learn more about the system, as the system evolve, and as we evolve as engineers and architects"
+
+
+
+
+
+
