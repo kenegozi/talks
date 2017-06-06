@@ -66,10 +66,16 @@ var headerParts = Util.SplitHeader(headerLine);</pre>
 	<section>
 		<p>what happens when <code style="font-size: 80%">headerLine == "nocolon"</code>?
 		</p>
+		<ol class="fragment">
+			<li><code style="font-size: 80%">new[] { "nocolon" }</code></li>
+			<li><code style="font-size: 80%">new[] { "nocolon", "" }</code></li>
+			<li><code style="font-size: 80%">new[] { "nocolon", null }</code></li>
+		</ol>
 	</section>
 	<section>
-		<p>in A, <code style="font-size: 80%">if (headerParts.Length == 1)</code><br/>
-in B, change Util <code style="font-size: 80%">return new[] { parts[0], null }</code>
+		<p>in A, <code style="font-size: 80%">if (headerParts.Length == 1)</code></p>
+		<p class="fragment">
+			in B, <code style="font-size: 80%">if (headerParts[1] == null)</code> and change <code style="font-size: 80%">SplitHeader</code> to return <code style="font-size: 80%">new[] { parts[0], null }</code>
 		</p>
 	</section>
 	<section>
@@ -101,7 +107,16 @@ in B, change Util <code style="font-size: 80%">return new[] { parts[0], null }</
 		<h3>Best Practices?</h3>
 		<ul>
 			<li class="fragment">Stored Procedures!</li>
-			<li class="fragment">Waterfall</li>
+		</ul>
+	</section>
+	<section>
+		<img src="my/waterfall.jpg" />
+	</section>
+	<section>
+		<h3>Best Practices?</h3>
+		<ul>
+			<li>Stored Procedures!</li>
+			<li>Waterfall</li>
 			<li class="fragment">SOAP</li>
 			<li class="fragment">REST</li>
 		</ul>
@@ -142,6 +157,28 @@ in B, change Util <code style="font-size: 80%">return new[] { parts[0], null }</
 		<p class="fragment">Uncle Bob: bad designers induce design damage</p>
 		<p class="fragment">Ken: TDD applied badly often lead to design damage</p>
 		<p class="fragment">sub-units, integration classes, excessive use of mocks, isolating stable code</p>
+	</section>
+	<section>
+		<img src="my/owl.jpg" />
+	</section>
+	<section>
+		<pre class="fragment" style="font-size:80%">public void IsPrime_One() {
+	Assert.True(Primes.IsPrime(1));
+}</pre>
+		<pre class="fragment" style="font-size:80%">bool IsPrime(int number) {
+	return number == 1;
+}</pre>
+		<pre class="fragment" style="font-size:50%">switch (number) {
+  case 1: 
+  case 2:
+  case 3:
+  case 5:
+    return true;
+    break;
+  default:
+    return false;
+}</pre>
+		<pre class="fragment" style="font-size:80%">//algorithm</pre>
 	</section>
 	<section>
 		<p style="text-align:left;padding-left:50px;">We are paid to deliver lasting business value<br/>
@@ -246,6 +283,8 @@ in B, change Util <code style="font-size: 80%">return new[] { parts[0], null }</
 				fragments: true,
 				minScale: 1,
 				maxScale: 1,
+				transition: 'fade',
+				transitionSpeed: 'fast',
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
