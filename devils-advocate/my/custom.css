@@ -1,0 +1,26 @@
+ul li {
+/*	list-style-type: none; */
+}
+
+.reveal pre {
+	font-size: 100%;
+	font-family: "fira code";
+    color: lightgreen;
+}
+
+.reveal code {
+    font-family: "fira code";
+    color: lightgreen;
+}
+
+.reveal .blink {
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(2, start);
+}
+@keyframes blink {
+    55% {
+        visibility: hidden;
+    }
+}
