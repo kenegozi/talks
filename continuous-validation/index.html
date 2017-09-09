@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>APIL - failures</title>
+		<title>System Validation</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -27,10 +27,11 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+                                <section>
+<h1>{</h1>
+                                </section>
 				<section class="intro">
-<h1>system validation in the age of continuous delivery</h1>
-<h3>APIL 2017</h3>
-<h5>Ken Egozi</h5>
+<h1>system validation in the age of CD</h1>
 				</section>
 
 <section>
@@ -39,6 +40,8 @@
 		<p class="fragment">E-Commerce</p>
 		<p class="fragment">Collaboration tools</p>
 		<p class="fragment">Games</p>
+		<p class="fragment">Spaceships</p>
+		<p class="fragment">Pacemakers</p>
 </section>
 <section>
 		<h3>problem</h3>
@@ -48,27 +51,19 @@
 		<p class="fragment"><br/>OMG OMG OMG</p>
 </section>
 <section>
-	<div style="position: relative;width: 500px; margin: 0 auto;">
-		<img src="my/get-off-my-lawn.jpg">
-		<p style="position: absolute;top: 0;width: 500px;text-shadow: 2px 2px #112211;font-weight:bold;left: 0; text-align: center;">GET OFF MY LAWN</p>
-	</div>
-</section>
-<section>
-		<img src="my/waterfall.jpg">
-</section>
-<section>
 	<section>
 	<h3>Why do systems fail?</h3>
-		<img class="fragment" src="my/maxpixel.freegreatpicture.com-Drinking-Happy-Festival-Funny-Party-Flies-Beer-161350.png" />
-	</section>
-	<section>
-		<h3>Why bugs?</h3>
-		<img class="fragment" src="my/software-built-by-humans.jpg" />
+		<img class="fragment" style="height:350px" src="my/bug.jpg" />
 	</section>
 	<section>
 		<h3>solution</h3>
 		<p class="fragment collapsible">Do not write bugs!</p>
 		<p class="fragment" style="text-decoration: line-through;">Do not write bugs!</p>
+		<img class="fragment" style="height:350px" src="my/software-built-by-humans.jpg" />
+	</section>
+	<section>
+		<h3>solution</h3>
+		<p class="" style="text-decoration: line-through;">Do not write bugs!</p>
 		<p class="fragment">unit testing</p>
 		<p class="fragment">integration testing</p>
 		<p class="fragment">formal validation</p>
@@ -92,10 +87,12 @@
 		<p class="fragment">
 			<img style="height:200px" src="my/worked-on-my-machine.jpg" />
 		</p>
-		<p class="fragment what-if-img">
-			<img src="my/what-if.jpg" />
-		</p>
 		</div>
+	</section>
+	<section>
+		<p class="what-if-img">
+			<img style="height:500px" src="my/what-if.jpg" />
+		</p>
 	</section>
 </section>
 <!-- LIKE -->
@@ -175,7 +172,7 @@ DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
 		<span class="fragment">18:10 Problem escalated to engineering team</span><br/>
 		<span class="fragment">18:15 Decision made not to roll back</span><br/>
 		<span class="fragment">19:20 Engineer repro on prod, problem identified</span><br/>
-		<span class="fragment">19:30 Fixed migration script is code-reviews</span><br/>
+		<span class="fragment">19:30 Fixed migration script is code-reviewed</span><br/>
 		<span class="fragment">19:35 Fixed migration script ran on prod DB</span><br/>
 		</p>
 	</section>
@@ -200,7 +197,7 @@ DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
 		<p class="fragment">prod default salts are <code>byte[15]</code> instead of <code>byte[16]</code></p>
 		<pre class="fragment" style="font-size: 80%">DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
 		<p class="fragment">15 '\0' and 1 '\'<p>
-		<p class="fragment">MySQL decide not to fail, and guess differently on Windows and Linux</p>
+		<p class="fragment">MySQL decide not to fail, and guessed differently on Windows and Linux</p>
 	</section>
 	<section>
 		<h3>learnings from NullBug</h3>
@@ -213,7 +210,8 @@ DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
 <section>
 	<section>
 		<h3>What did you say?</h3>
-		<p class="fragment">Large distributed system, uses Gossip for cluster discovery</p>
+		<p class="fragment">Large distributed system, stateful, load balanced</p>
+		<p class="fragment"><small>SeeAlso: A Gossip-Style Failure Detection Service</small></p>
 		<p class="fragment">6 years in production, millions TPS</p>
 		<p class="fragment">yup, per second</p>
 		<p class="fragment">Suddenly error rate goes up</p>
@@ -222,21 +220,21 @@ DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
 		<p class="fragment">OMG OMG OMG</p>
 	</section>
 	<section>
-		<h3>though shall gossip</h3>
+		<h3>thou shalt gossip</h3>
 			<pre class="fragment collapsible" style="font-size: 80%">
-		host1.mycompany.com
-		host6.mycompany.com
-		host7.mycompany.com
-		host10.mycompany.com
-		host2.mycompany.com</pre>
+	host01.mycompany.com 10
+	host06.mycompany.com 90
+	host07.mycompany.com 30
+	host10.mycompany.com 31
+	host02.mycompany.com 35</pre>
 			<pre class="fragment" style="font-size: 80%">
-		?ost1.mycompany.com
-		host6.mycompany.com
-		host7.mycompany.com
-		host10.mycompany.com
-		host2.mycompany.com</pre>
-		<p class="fragment">When an instance is needed, a DNS validation is made to make sure it is valid, deleted if not</p>
-		<p class="fragment">Deletion code is calling <code>delete</code> twice on the same string (C++ FTW). Segfault followes.</p>
+	?ost01.mycompany.com 10
+	host06.mycompany.com 90
+	host07.mycompany.com 30
+	host10.mycompany.com 31
+	host02.mycompany.com 35</pre>
+		<p class="fragment">When an instance is selected, a quick format validation is executed.</p>
+		<p class="fragment">When invalid, deletion code is calling <code>free</code> twice on the same pointer (C++ FTW). Segfault follows.</p>
 	</section>
 	<section>
 		<h3>show me the check(sum)</h3>
@@ -248,6 +246,18 @@ else whatever</pre>
 		<pre class="fragment" style="font-size: 80%">
 ?hecksum=0123456789abcdef</pre>
 		<p class="fragment">Zero downtime interim code was never removed</p>
+	</section>
+	<section>
+		<h3>Why?</h3>
+		<ul>
+			<li>Why did error rate go up?</li>
+			<li>Why did hosts restart?</li>
+			<li>Why was memory released?</li>
+			<li>Why was there a broken hostname?</li>
+			<li>Why wasn't the broken message rejected?</li>
+			<li>Why did the server accept a missing checksum?</li>
+			<li>Why wasn't the impact limited to a single host?</li>
+		</ul>
 	</section>
 	<section>
 		<h3>impact</h3>
@@ -265,7 +275,7 @@ else whatever</pre>
 		</p>
 	</section>
 	<section>
-		<h3>learnings from NullBug</h3>
+		<h3>learnings from BitBug</h3>
 		<p class="fragment">Time to detection</p>
 		<p class="fragment">Self replicating bugs</p>
 		<p class="fragment">Never tested scenarios</p>
@@ -311,8 +321,9 @@ else whatever</pre>
 	<h3>Notomatic</h3>
 	<p class="fragment">Change management process - a "code" reviewed document</p>
 	<p class="fragment">Pre-mortem</p>
+	<blockquote class="fragment">I play a little game. I assume the worst<br/><small><i>Baelish, P.</i></small></blockquote>
 	<p class="fragment">Clear rollback criteria</p>
-	<p class="fragment">Pre-reviews scripts</p>
+	<p class="fragment">Pre-reviewed scripts</p>
 	<p class="fragment">Any monkey can execute or take over</p>
 </section>
 <section>
@@ -325,6 +336,12 @@ else whatever</pre>
 	<p class="fragment"><q>best learnings - read COEs</q></p>
 </section>
 <section>
+        <p>@kenegozi<br/>
+        <a href="http://kenegozi.com">http://kenegozi.com</a><br/>
+        <a href="http://kenegozi.com/talks">http://kenegozi.com/talks</a><br/>
+        </p>
+</section>
+<section>
 	<h3>recap</h3>
 	<ul style="margin: 0">
 	<li class="fragment">automate what you can, vet what you cannot</li>
@@ -334,18 +351,8 @@ else whatever</pre>
 	<li class="fragment">always be shipping!</li>
 	</ul>
 </section>
-<!--
 <section>
-	<h3>readings</h3>
-	<p><a href="https://www.awsarchitectureblog.com/">https://www.awsarchitectureblog.com/</a></p>
-	<p><a href="http://udidahan.com/?blog=true">http://udidahan.com/?blog=true</a></p>
-	<p><a href="http://arnon.me/">http://arnon.me/</a>
-</section>
--->
-<section>
-	<p>Thank you!</p>
-	<p>&nbsp;</p>
-	<p>@kenegozi<br/>
+        <h1>}</h1>
 </section>
 			</div>
 		</div>
@@ -360,6 +367,8 @@ else whatever</pre>
 				fragments: true,
 				minScale: 1,
 				maxScale: 1,
+				transition: 'fade',
+				transitionSpeed: 'fast',
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
