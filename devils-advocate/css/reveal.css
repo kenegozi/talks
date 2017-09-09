@@ -168,13 +168,15 @@ body {
 .reveal .slides section span.fragment.collapsible,
 .reveal .slides section pre.fragment.collapsible,
 .reveal .slides section p.fragment.collapsible,
+.reveal .slides section ul.fragment.collapsible,
 .reveal .slides section li.fragment.collapsible,
 .reveal .slides section div.fragment.collapsible {
   display: none; }
 
 .reveal .slides section pre.fragment.current-fragment,
 .reveal .slides section p.fragment.current-fragment,
-.reveal .slides section li.fragment.collapsible,
+.reveal .slides section ul.fragment.current-fragment,
+.reveal .slides section li.fragment.current-fragment,
 .reveal .slides section div.fragment.current-fragment {
   display: block; }
 .reveal .slides section span.fragment.current-fragment {

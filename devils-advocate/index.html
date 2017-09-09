@@ -37,7 +37,7 @@
 		<pre class="fragment collapsible" style="font-size: 80%">var headerParts = headerLine.Split(new[]{':'}, 2);</pre>
 		<pre class="fragment collapsible" style="font-size: 80%">class Util {
   static string[] SplitHeader(string header) {
-    return header.Split(":", 2);
+    return header.Split(new[]{':'}, 2);
   }
 }
 
@@ -48,12 +48,19 @@ var headerParts = Util.SplitHeader(headerLine);</pre>
   }
 }
 
-var headerParts = Util.SplitHeader(headerLine);</pre>
+var headerParts = HeaderUtil.SplitHeader(headerLine);</pre>
 		</div>
 	</section>
 	<section>
 		<h3>DRY</h3>
-		<p class="fragment">
+		<p>
+			<img style="height:350px" src="my/dry.jpg" /><br />
+			<small>&nbsp;</small>
+		</p>
+	</section>
+	<section>
+		<h3>DRY</h3>
+		<p>
 			<img style="height:350px" src="my/split-repeated.png" /><br />
 			<small>&#9650; === HeaderUtil</small>
 		</p>
@@ -93,7 +100,33 @@ var headerParts = Util.SplitHeader(headerLine);</pre>
 
 <section data-notes="C# Beer fringe job nmeetings notepad.exe exit-vim">
 	<h3>Practice</h3>
-	<p style="font-size:130%">YES / NO</p>
+	<p class="fragment collapsible">
+		<img style="height:350px" src="my/practice.jpg" />
+        </p>
+	<p class="fragment collapsible">
+		YES / NO
+        </p>
+	<p class="fragment collapsible">
+		<img style="height:350px" src="my/job.jpg" />
+        </p>
+	<p class="fragment collapsible">
+		<img style="height:350px" src="my/beer.jpg" />
+        </p>
+	<p class="fragment collapsible">
+		<img style="height:350px" src="my/meeting.jpg" />
+        </p>
+	<p class="fragment collapsible">
+		<img style="height:350px" src="my/seattle.png" />
+        </p>
+	<p class="fragment collapsible">
+		<img style="height:350px" src="my/java.jpg" />
+        </p>
+	<p class="fragment collapsible">
+		<img style="height:350px" src="my/traffic.jpg" />
+        </p>
+	<p class="fragment">
+		<img style="height:350px" src="my/code.jpg" />
+        </p>
 </section>
 
 <!-- Best Practice -->
@@ -214,14 +247,16 @@ var headerParts = Util.SplitHeader(headerLine);</pre>
 	</section>
 	<section>
 		<h3>Microservices and SOA at Amazon</h3>
-		<p>Obidos</p>
-		<ul class="fragment">
-			<li>All teams will henceforth expose their data and functionality through service interfaces.</i>
-			<li>The only communication allowed is via service interface calls over the network.</li>
-			<li>Decoupled deployment and operational model</li>
-			<li>early 2000s</li>
-		</ul>
-		<p class="fragment">=&gt; Gurupa</p>
+		<div style="min-height:460px">
+     			<p class="fragment collapsible"><img style="height:350px" src="my/obidos.jpg" /></p>
+			<p class="fragment collapsible">=&gt; Gurupa</p>
+			<ul class="fragment">
+				<li>All teams will henceforth expose their data and functionality through service interfaces.</i>
+				<li>The only communication allowed is via service interface calls over the network.</li>
+				<li>Decoupled deployment and operational model</li>
+				<li>early 2000s</li>
+			</ul>
+		</div>
 	</section>
 	<section>
 		<h3>Problems</h3>
@@ -255,7 +290,10 @@ var headerParts = Util.SplitHeader(headerLine);</pre>
 	</section>
 </section>
 <section>
-	<p>Upfront design, checking in libs to git</p>
+	<h3>Big Design Upfront</h3>
+</section>
+<section>
+	<h3>Storing libs in git</h3>
 </section>
 <section>
 	<p>@kenegozi<br/>
