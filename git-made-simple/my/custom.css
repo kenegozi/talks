@@ -4,12 +4,12 @@ ul li {
 
 .reveal pre {
 	font-size: 100%;
-	font-family: "fira code";
+	font-family: "fira code", Monaco, monospace;
     color: lightgreen;
 }
 
 .reveal code {
-    font-family: "fira code";
+    font-family: "fira code", Monaco, monospace;
     color: lightgreen;
 }
 
