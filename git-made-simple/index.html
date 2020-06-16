@@ -232,19 +232,19 @@ Date:   Sat Nov 5 00:09:31 2016 -0700
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-master
+trunk
   ↓
   A
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-       master
+       trunk
          ↓
   A  <-  B
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              master
+              trunk
                 ↓
   A  <-  B  <-  C
 </pre></div>
@@ -268,13 +268,13 @@ master
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              master
+              trunk
                 ↓
   A  <-  B  <-  C
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              master
+              trunk
                 ↓
   A  <-  B  <-  C
                 ↑
@@ -282,7 +282,7 @@ master
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              master
+              trunk
                 ↓
   A  <-  B  <-  C  <-  D
                        ↑    
@@ -319,7 +319,7 @@ master
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-              master
+              trunk
                 ↓
   A  <-  B  <-  C  <-  D
                        ↑    
@@ -327,13 +327,13 @@ master
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                     master
+                     trunk
                        ↓
   A  <-  B  <-  C  <-  D
                        ↑    
                      feature
 
-[master] $ git merge feature --ff-only
+[trunk] $ git merge feature --ff-only
 </pre></div>
 </div>
 </section>
@@ -342,7 +342,7 @@ master
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-            master
+            trunk
               ↓
 A  <-  B  <-  C  <-  D
                      ↑    
@@ -350,7 +350,7 @@ A  <-  B  <-  C  <-  D
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                   master
+                   trunk
                      ↓
 A  <-  B  <-  C  <-  E
                 ↖ 
@@ -360,7 +360,7 @@ A  <-  B  <-  C  <-  E
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                   master
+                   trunk
                      ↓
 A  <-  B  <-  C  <-  E
                 ↖      ↖ 
@@ -368,24 +368,24 @@ A  <-  B  <-  C  <-  E
                          ↑    
                       feature
 
-[feature] $ git merge master
+[feature] $ git merge trunk
 </pre></div>
 
 	<div class="fragment current-visible collapsible">
 <pre>
                    
                      
-A  <-  B  <-  C  <-  E    master
+A  <-  B  <-  C  <-  E    trunk
                 ↖      ↖   ↙
                   D  <-  F
                          ↑    
                       feature
 
-[master] $ git merge feature
+[trunk] $ git merge feature
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                          master
+                          trunk
                             ↓
 A  <-  B  <-  C  <-  E  <-  F
                 ↖         ↗ ↑
@@ -393,7 +393,7 @@ A  <-  B  <-  C  <-  E  <-  F
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                           master
+                           trunk
                              ↓
 A  <-  B  <-  C  <-  E   <-  G
                 ↖      ↖   ↙
@@ -401,8 +401,8 @@ A  <-  B  <-  C  <-  E   <-  G
                          ↑    
                       feature
 
-[master] $ git checkout E
-[master] $ git merge feature --no-ff
+[trunk] $ git checkout E
+[trunk] $ git merge feature --no-ff
 </pre></div>
 </div>
 	</section>
@@ -442,7 +442,7 @@ A  <-  B  <-  C  <-  E   <-  G
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-                   master
+                   trunk
                      ↓
 A  <-  B  <-  C  <-  E
                 ↖ 
@@ -469,16 +469,16 @@ A  <-  B  <-  C  <-  E
 		<p>added <span style="color:lightpink">d.txt</span></p>
 	</div>
 	<div class="fragment current-visible collapsible"><pre>
-                   master
+                   trunk
                      ↓
 A  <-  B  <-  C  <-  E  <-  D'
                 ↖           ↑                     
                   D      feature 
 
-[feature] $ git rebase master
+[feature] $ git rebase trunk
 </pre></div>
 	<div class="fragment current-visible collapsible"><pre>
-                   master
+                   trunk
                      ↓
 A  <-  B  <-  C  <-  E  <-  D'
                 ↖           ↑                     
@@ -489,13 +489,13 @@ D.anscestry !== D'.anscestry
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                          master
+                          trunk
                             ↓
 A  <-  B  <-  C  <-  E  <-  D'
                 ↖           ↑                     
                   D      feature 
 
-[master] $ git merge feature --ff-only
+[trunk] $ git merge feature --ff-only
 </pre></div>
 </div>
 </section>
@@ -504,7 +504,7 @@ A  <-  B  <-  C  <-  E  <-  D'
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-            master
+            trunk
               ↓
 A  <-  B  <-  F
   ↖ 
@@ -514,7 +514,7 @@ A  <-  B  <-  F
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-            master
+            trunk
               ↓
 A  <-  B  <-  F  <-  C'
   ↖                    ↖
@@ -522,7 +522,7 @@ A  <-  B  <-  F  <-  C'
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-            master
+            trunk
               ↓
 A  <-  B  <-  F  <-  C' <-  D'
   ↖                         ↑
@@ -530,7 +530,7 @@ A  <-  B  <-  F  <-  C' <-  D'
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-            master
+            trunk
               ↓
 A  <-  B  <-  F  <-  C' <-  D' <-  E'
   ↖                                ↑
