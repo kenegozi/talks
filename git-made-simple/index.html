@@ -92,7 +92,7 @@ Date:   Sat Nov 5 00:09:31 2016 -0700
     ... finally
 
 </pre><pre class="fragment collapsible">commit <span style="text-decoration: line-through">----------REDACTED-------------</span>
-Author: <span style="color: lightpink">kenegozi</span>
+Author: <span class="highlight-change">kenegozi</span>
 Date:   Sat Nov 5 00:09:31 2016 -0700
 
     very important feature!
@@ -130,7 +130,7 @@ Date:   Sat Nov 5 00:09:31 2016 -0700
 	<small>now seriousy</small>
 	<h3 class="fragment">what is git?</h3>
 	<p class="fragment collapsible">replicable, versionable, highly-available, fault-tolerant, eventually-consistent, distributed object database</p>
-	<p class="fragment">replicable, versionable, highly-available, fault-tolerant, eventually-consistent, distributed <strike>object database</strike> source control manager</p>
+	<p class="fragment">replicable, versionable, highly-available, fault-tolerant, eventually-consistent, distributed <strike>object database</strike> <span class="highlight-change">source control manager</span></p>
 	<p>&nbsp;</p>
 	<p class="fragment">finally git made simple <span class="fragment">?</span></p>
 	<p>
@@ -143,7 +143,7 @@ Date:   Sat Nov 5 00:09:31 2016 -0700
 	<p class="fragment">have you ever met a git pro?</p>
 	<p class="fragment collapsible"><img src="my/linus-torvalds.png"></p>
 	<p>&nbsp;</p>
-	<p class="fragment">me? <span class="fragment">using git 10-&epsilon; years </span> <span class="fragment">!</span> <span class="fragment"> . . . still not a pro</span></p>
+	<p class="fragment">me? <span class="fragment">using git 15-&epsilon; years </span> <span class="fragment">!</span> <span class="fragment"> . . . still not a pro</span></p>
 	<p class="fragment">
 		<span>yet for me it's been working better than</span> 
 		<span class="fragment">printouts</span>
@@ -160,7 +160,7 @@ Date:   Sat Nov 5 00:09:31 2016 -0700
 	<small>so</small>
 	<h3 class="fragment">what is git?</h3>
 	<p class="fragment collapsible">a clever way of using branches for tracking and managing commits</p>
-	<p class="fragment">a clever way of using <strike>branches</strike> post-it notes for tracking and managing <strike>commits</strike> changes</p>
+	<p class="fragment">a clever way of using <strike>branches</strike> <span class="highlight-change">post-it notes</span> for tracking and managing <strike>commits</strike> <span class="highlight-change">changes</span></p>
 	<p>&nbsp;</p>
 	<p><small class="fragment">not in the README</small></p>
 	<p><small class="fragment">not in any official documentation</small></p>
@@ -231,50 +231,54 @@ Files:
 <section>
 <section>
 	<h3>what is a branch?</h3>
-	<blockquote class="fragment">a movable post-it note referencing a specific commit in the graph</blockquote>
+	<blockquote class="fragment">a movable, auto-advancing post-it note referencing a specific commit in the graph</blockquote>
 </section>
 <section>
 	<h3>branches</h3>
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-main
+*main
   ↓
   A
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-       main
+       *main
          ↓
   A  <-  B
+
+[main] $ git commit
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              main
+              *main
+                ↓
+  A  <-  B  <-  C
+
+[main] $ git commit
+</pre></div>
+	<div class="fragment current-visible collapsible">
+<pre>
+              *main
                 ↓
   A  <-  B  <-  C
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              main
+              *names
                 ↓
   A  <-  B  <-  C
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              names
+              *derp
                 ↓
   A  <-  B  <-  C
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-              derp
-                ↓
-  A  <-  B  <-  C
-</pre></div>
-	<div class="fragment current-visible collapsible">
-<pre>
-              main
+              *main
                 ↓
   A  <-  B  <-  C
 </pre></div>
@@ -284,7 +288,10 @@ main
                 ↓
   A  <-  B  <-  C
                 ↑
-              feature
+              *feature
+
+[main] $ git checkout -b feature
+[feature] $
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
@@ -292,7 +299,9 @@ main
                 ↓
   A  <-  B  <-  C  <-  D
                        ↑    
-                     feature
+                     *feature
+
+[feature] $ git commit
 </pre></div>
 </div>
 </section>
@@ -306,34 +315,27 @@ main
 	<h3>what is a merge?</h3>
 	<pre style="font-size: 60%;"><div class="fragment" >$ git man merge</div>
 <div class="fragment">--ff
- When the merge resolves as a fast-forward, only update the branch
- pointer, without creating a merge commit. This is the default
- behavior.
 
 --no-ff
- Create a merge commit even when the merge resolves as a fast-forward.
- This is the default behaviour when merging an annotated (and possibly
- signed) tag.
 
---ff-only
- Refuse to merge and exit with a non-zero status unless the current
- HEAD is already up-to-date or the merge can be resolved as a
- fast-forward.</div></pre>
+--ff-only </div></pre>
 	</section>
 	<section>
 	<h4>fast forward</h4>
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-              main
+              *main
                 ↓
   A  <-  B  <-  C  <-  D
                        ↑    
                      feature
+
+[main] $
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                     main
+                     *main
                        ↓
   A  <-  B  <-  C  <-  D
                        ↑    
@@ -348,21 +350,25 @@ main
 	<div style="min-height: 450px;">
 	<div class="fragment current-visible collapsible">
 <pre>
-            main
+            *main
               ↓
 A  <-  B  <-  C  <-  D
                      ↑    
                    feature
+
+[main] $
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                   main
+                   *main
                      ↓
 A  <-  B  <-  C  <-  E
                 ↖ 
                   D
                   ↑    
                 feature
+
+[main] $ git commit
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
@@ -372,8 +378,9 @@ A  <-  B  <-  C  <-  E
                 ↖      ↖ 
                   D  <-  F
                          ↑    
-                      feature
+                      *feature
 
+[main] git checkout feature
 [feature] $ git merge main
 </pre></div>
 
@@ -381,34 +388,14 @@ A  <-  B  <-  C  <-  E
 <pre>
                    
                      
-A  <-  B  <-  C  <-  E    main
+A  <-  B  <-  C  <-  E    *main
                 ↖      ↖   ↙
                   D  <-  F
                          ↑    
                       feature
 
+[feature] $ git checkout main
 [main] $ git merge feature
-</pre></div>
-	<div class="fragment current-visible collapsible">
-<pre>
-                          main
-                            ↓
-A  <-  B  <-  C  <-  E  <-  F
-                ↖         ↗ ↑
-                  ↖= D =↗  feature   
-</pre></div>
-	<div class="fragment current-visible collapsible">
-<pre>
-                           main
-                             ↓
-A  <-  B  <-  C  <-  E   <-  G
-                ↖      ↖   ↙
-                  D  <-  F
-                         ↑    
-                      feature
-
-[main] $ git checkout E
-[main] $ git merge feature --no-ff
 </pre></div>
 </div>
 	</section>
@@ -416,19 +403,10 @@ A  <-  B  <-  C  <-  E   <-  G
 	<h3>what is a merge?</h3>
 	<pre style="font-size: 60%;"><div>$ git man merge</div>
 <div>--ff
- When the merge resolves as a fast-forward, only update the branch
- pointer, without creating a merge commit. This is the default
- behavior.
 
 --no-ff
- Create a merge commit even when the merge resolves as a fast-forward.
- This is the default behaviour when merging an annotated (and possibly
- signed) tag.
 
---ff-only
- Refuse to merge and exit with a non-zero status unless the current
- HEAD is already up-to-date or the merge can be resolved as a
- fast-forward.</div></pre>
+--ff-only </div></pre>
 	</section>
 
 </section>
@@ -438,10 +416,6 @@ A  <-  B  <-  C  <-  E   <-  G
 	<h3>what is a rebase?</h3>
 	<p class="fragment">serializing (and rewriting) history</p>
 	<p class="fragment">working concurrenty, exploring linearly</p>
-</section>
-<section>
-	<h3>why rebase?</h3>
-	<p class="fragment"><img alt="git not ff derp" src="my/git-no-ff-derp.gif"></p>
 </section>
 <section>
 	<h3>what is a rebase?</h3>
@@ -454,7 +428,8 @@ A  <-  B  <-  C  <-  E
                 ↖ 
                   D
                   ↑    
-                feature
+                *feature
+[feature] $
 </pre></div>
 	<div class="fragment current-visible collapsible">
 		<p>added a.txt</p>
@@ -471,15 +446,15 @@ A  <-  B  <-  C  <-  E
 		<p>added a.txt</p>
 		<p>added b.txt</p>
 		<p>added c.txt</p>
-		<p>added <span style="color:lightpink">e.txt</span></p>
-		<p>added <span style="color:lightpink">d.txt</span></p>
+		<p>added <span class="highlight-change">e.txt</span></p>
+		<p>added <span class="highlight-change">d.txt</span></p>
 	</div>
 	<div class="fragment current-visible collapsible"><pre>
                    main
                      ↓
 A  <-  B  <-  C  <-  E  <-  D&apos;
                 ↖           ↑                     
-                  D      feature 
+                  D      *feature 
 
 [feature] $ git rebase main
 </pre></div>
@@ -488,19 +463,20 @@ A  <-  B  <-  C  <-  E  <-  D&apos;
                      ↓
 A  <-  B  <-  C  <-  E  <-  D&apos;
                 ↖           ↑                     
-                  D      feature 
+                  D      *feature 
 
 D: diff: +cool-feature, parents: [ C ]
 D&apos;: diff: +cool-feature, parents: [ E ]
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
-                          main
+                          *main
                             ↓
-A  <-  B  <-  C  <-  E  <-  D'
+A  <-  B  <-  C  <-  E  <-  D&apos;
                 ↖           ↑                     
                   D      feature 
 
+[feature] $ git checkout main
 [main] $ git merge feature --ff-only
 </pre></div>
 </div>
@@ -516,33 +492,43 @@ A  <-  B  <-  F
   ↖ 
     C  <-  D  <-  E
                   ↑    
-                feature
+                *feature
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
             main
               ↓
-A  <-  B  <-  F  <-  C'
+A  <-  B  <-  F  <-  C&apos;
   ↖                    ↖
-    C  <-  D  <-  E     feature
+    C  <-  D  <-  E     *feature
+
+[feature] $ git rebase main
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
             main
               ↓
-A  <-  B  <-  F  <-  C' <-  D'
+A  <-  B  <-  F  <-  C&apos; <-  D&apos;
   ↖                         ↑
-    C  <-  D  <-  E      feature
+    C  <-  D  <-  E      *feature
+
+[feature] $ git rebase main
 </pre></div>
 	<div class="fragment current-visible collapsible">
 <pre>
             main
               ↓
-A  <-  B  <-  F  <-  C' <-  D' <-  E'
+A  <-  B  <-  F  <-  C&apos; <-  D&apos; <-  E&apos;
   ↖                                ↑
-    C  <-  D  <-  E             feature
+    C  <-  D  <-  E             *feature
+
+[feature] $ git rebase main
 </pre></div>
 </div>
+</section>
+<section>
+	<h3>why rebase?</h3>
+	<p class="fragment"><img alt="git not ff derp" src="my/git-no-ff-derp.gif"></p>
 </section>
 </section>
 
@@ -558,10 +544,10 @@ A  <-  B  <-  F  <-  C' <-  D' <-  E'
 		tag - static (e.g. identify a release)
 	</li>
 	<li class="fragment">
-		HEAD - the current checked-out commit
-	</li>
-	<li class="fragment">
-		relative - HEAD^^^ is HEAD-3, HEAD~2 is HEAD-2
+		HEAD - the current checked-out commit 
+		<div class="fragment">
+		&nbsp;&nbsp;&#9757;&#65039;&nbsp;relative - HEAD^^^ is HEAD-3, HEAD~2 is HEAD-2
+		</div>
 	</li>
 	</ul>
 	</section>
@@ -583,11 +569,6 @@ A  <-  B  <-  F  <-  C' <-  D' <-  E'
 </section>
 
 <section>
-	<h3>one last concept</h3>
-	<p>index (or staging area) - were we group changes to files and preparing them for a single commit</p>
-</section>
-
-<section>
 <section>
 	<h3>demo</h3>
 	<p class="fragment"><img alt="best git client is git" src="my/best-git-client-is-git.png" /></p>
@@ -606,11 +587,10 @@ A  <-  B  <-  F  <-  C' <-  D' <-  E'
 	<p class="fragment">keep calm and gitk</p>
 </section>
 <section>
-	<p>I'm Ken, and I'll be here all week!</p>
-	<p>&nbsp;</p>
-	<p>@kenegozi<br/>
-	<a href="http://kenegozi.com">http://kenegozi.com</a><br/>
-	github.com/kenegozi </p>
+	<p><a href="https://twitter.com/kenegozi">@kenegozi</a><br/>
+	<a href="https://www.linkedin.com/in/kenegozi/">linkedin.com/in/kenegozi</a><br/>
+	<a href="https://github.com/kenegozi">github.com/kenegozi</a></p>
+	<a href="https://www.kenegozi.com">www.kenegozi.com</a><br/>
 </section>
 			</div>
 		</div>
