@@ -1,132 +1,137 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>System Validation</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
-		<link rel="stylesheet" href="my/custom.css">
+	<title>System Validation</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="my/custom.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
 
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                                <section>
-<h1>{</h1>
-                                </section>
-				<section class="intro">
-<h1>system validation in the age of CD</h1>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section class="intro">
+
+				<h1>How to write Bad Software</h1>
+			</section>
+
+			<section>
+				<h3>write</h3>
+				<p class="fragment">Social networks</p>
+				<p class="fragment">E-Commerce</p>
+				<p class="fragment">Collaboration tools</p>
+				<p class="fragment">Games</p>
+				<p class="fragment">Spaceships</p>
+				<p class="fragment">Pacemakers</p>
+				<p class="fragment">Software</p>
+			</section>
+			<section>
+				<h3>bad software</h3>
+				<p class="fragment">lose money</p>
+				<p class="fragment">lose information</p>
+				<p class="fragment">lose trust</p>
+				<p class="fragment">lose sleep</p>
+				<p class="fragment">lose life</p>
+				<p class="fragment">lose</p>
+			</section>
+			<section>
+				<section>
+					<h3>Why do systems fail?</h3>
+					<img class="fragment" style="height:350px" src="my/bug.jpg" />
 				</section>
-
-<section>
-		<h3>building</h3>
-		<p class="fragment">Social networks</p>
-		<p class="fragment">E-Commerce</p>
-		<p class="fragment">Collaboration tools</p>
-		<p class="fragment">Games</p>
-		<p class="fragment">Spaceships</p>
-		<p class="fragment">Pacemakers</p>
-</section>
-<section>
-		<h3>problem</h3>
-		<p class="fragment">lose money</p>
-		<p class="fragment">lose information</p>
-		<p class="fragment">lost trust</p>
-		<p class="fragment"><br/>OMG OMG OMG</p>
-</section>
-<section>
-	<section>
-	<h3>Why do systems fail?</h3>
-		<img class="fragment" style="height:350px" src="my/bug.jpg" />
-	</section>
-	<section>
-		<h3>solution</h3>
-		<p class="fragment collapsible">Do not write bugs!</p>
-		<p class="fragment" style="text-decoration: line-through;">Do not write bugs!</p>
-		<img class="fragment" style="height:350px" src="my/software-built-by-humans.jpg" />
-	</section>
-	<section>
-		<h3>solution</h3>
-		<p class="" style="text-decoration: line-through;">Do not write bugs!</p>
-		<p class="fragment">unit testing</p>
-		<p class="fragment">integration testing</p>
-		<p class="fragment">formal validation</p>
-	</section>
-	<section>
-		<h3>however</h3>
-		<div style="min-height: 350px">
-		<p class="">
-			<span class="fragment">knock knock</span>&nbsp;&nbsp;
-			<span class="fragment">race condition!</span>&nbsp;&nbsp;
-			<span class="fragment">who's there?</span>
-		</p>
-		<p>
-			<span class="fragment">OS update</span><br/>
-			<span class="fragment">self-replicating bug</span><br/>
-			<span class="fragment">SSL expiration</span><br/>
-		</p>
-		<p class="fragment collapsible">
-		<q>“Windows Azure Storage experienced a worldwide outage impacting HTTPS traffic due to an expired SSL certificate,” Martin reported. “HTTP traffic was unaffected but the event impacted a number of Windows Azure services that are dependent on Storage.”</q>
-		</p>
-		<p class="fragment">
-			<img style="height:200px" src="my/worked-on-my-machine.jpg" />
-		</p>
-		</div>
-	</section>
-	<section>
-		<p class="what-if-img">
-			<img style="height:500px" src="my/what-if.jpg" />
-		</p>
-	</section>
-</section>
-<!-- LIKE -->
-<section>
-	<section>
-		<h3>Hush</h3>
-		<div style="min-height: 350px">
-		<pre class="fragment collapsible" style="font-size: 80%">
+				<section>
+					<h3>solution</h3>
+					<p class="fragment collapsible">Make code, no bugs!</p>
+					<p class="fragment" style="text-decoration: line-through;">Make code, no bugs!</p>
+					<img class="fragment" style="height:350px" src="my/software-built-by-humans.jpg" />
+				</section>
+				<section>
+					<h3>solution</h3>
+					<p class="fragment">test</p>
+					<p class="fragment">unit test</p>
+					<p class="fragment">integration test</p>
+					<p class="fragment">formal validation</p>
+				</section>
+				<section>
+					<h3>however</h3>
+					<div style="min-height: 350px">
+						<p class="">
+							<span class="fragment">knock knock</span>&nbsp;&nbsp;
+							<span class="fragment">race condition!</span>&nbsp;&nbsp;
+							<span class="fragment">who's there?</span>
+						</p>
+						<p>
+							<span class="fragment">OS update</span><br />
+							<span class="fragment">self-replicating bug</span><br />
+							<span class="fragment">SSL expiration</span><br />
+						</p>
+						<p class="fragment collapsible">
+							<q>“Windows Azure Storage experienced a worldwide outage impacting HTTPS traffic due to an
+								expired SSL certificate,” Martin reported. “HTTP traffic was unaffected but the event
+								impacted a number of Windows Azure services that are dependent on Storage.”</q>
+						</p>
+						<p class="fragment">
+							<img style="height:200px" src="my/worked-on-my-machine.jpg" />
+						</p>
+					</div>
+				</section>
+				<section>
+					<p class="what-if-img">
+						<img style="height:500px" src="my/what-if.jpg" />
+					</p>
+				</section>
+			</section>
+			<!-- LIKE -->
+			<section>
+				<section>
+					<h3>Hush</h3>
+					<div style="min-height: 350px">
+						<pre class="fragment collapsible" style="font-size: 80%">
 if (u.pwd == pwd) {
 	return "Collect 200!"
 }
 
 return "Go to jail"</pre>
-		<pre class="fragment collapsible" style="font-size: 80%">
+						<pre class="fragment collapsible" style="font-size: 80%">
 if (u.hpwd == hash(pwd)) {
 	return "Collect 200!"
 }
 
 return "Go to jail"</pre>
-		<p class="fragment collapsible">
-			<img style="height: 300px" src="my/salt.jpg" />
-		</p>
-		<pre class="fragment collapsible" style="font-size: 80%">
+						<p class="fragment collapsible">
+							<img style="height: 300px" src="my/salt.jpg" />
+						</p>
+						<pre class="fragment collapsible" style="font-size: 80%">
 if (u.hpwd == hash(pwd + u.salt)) {
 	return "Collect 200!"
 }
 
 return "Go to jail"</pre>
-		<p class="fragment collapsible">
-			are you an existing user?<br/>
-			<br/>
-			STOP!
-		</p>
-		<pre class="fragment collapsible" style="font-size: 80%">
+						<p class="fragment collapsible">
+							are you an existing user?<br />
+							<br />
+							STOP!
+						</p>
+						<pre class="fragment collapsible" style="font-size: 80%">
 if (u.hpwd == hash(pwd + u.salt)) {
 	return "Collect 200!"
 }
@@ -140,244 +145,263 @@ if (u.salt == new byte[16] && u.hpwd == hash(pwd)) {
 
 return "Go to jail"</pre>
 
-		<pre class="fragment collapsible" style="font-size: 80%">
+						<pre class="fragment collapsible" style="font-size: 80%">
 UPDATE TABLE users
 ADD COLUMN salt 
 NOT NULL 
 DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
-		<p class="fragment collapsible">
-			<img style="height:200px" src="my/worked-on-my-machine.jpg" />
-		</p>
-		<p class="fragment collapsible">
-			<img style="height:200px" src="my/worked-on-my-machine.jpg" /> <br/>
-			and in QA and Staging!
-		</p>
-		<p class="fragment collapsible">
-			are you an existing user?<br/>
-			<br/>
-			STOP!
-		</p>
+						<p class="fragment collapsible">
+							<img style="height:200px" src="my/worked-on-my-machine.jpg" />
+						</p>
+						<p class="fragment collapsible">
+							<img style="height:200px" src="my/worked-on-my-machine.jpg" /> <br />
+							and in QA and Staging!
+						</p>
+						<p class="fragment collapsible">
+							are you an existing user?<br />
+							<br />
+							STOP!
+						</p>
 
-		</div>
+					</div>
 
-	</section>
-	<section>
-		<h3>what now?</h3>
-		<p>Timeline</p>
-		<p style="text-align: left;">
-		<span class="fragment">10:12 Migration script ran on prod DB</span><br/>
-		<span class="fragment">10:20 code deployed to prod</span><br/>
-		<span class="fragment">16:05 First impacted customer</span><br/>
-		<span class="fragment">18:05 First impacted customer sends email</span><br/>
-		<span class="fragment">18:10 Problem escalated to engineering team</span><br/>
-		<span class="fragment">18:15 Decision made not to roll back</span><br/>
-		<span class="fragment">19:20 Engineer repro on prod, problem identified</span><br/>
-		<span class="fragment">19:30 Fixed migration script is code-reviewed</span><br/>
-		<span class="fragment">19:35 Fixed migration script ran on prod DB</span><br/>
-		</p>
-	</section>
-	<section>
-		<h3>how are we doing on time?</h3>
-		<p class="fragment" style="text-align: left;">
-		<span>10:20 code deployed to prod</span><br/>
-		<span>16:05 First impacted customer</span><br/>
-		<span>18:05 First impacted customer sends email</span><br/>
-		<span>19:30 Fixed migration script is code-reviews</span><br/>
-		<span>19:35 Fixed migration script ran on prod DB</span><br/>
-		</p>
-		<p class="fragment" style="text-align: left;">
-		Time to Failure: 5h45m<br/>
-		Time to Detection: 2h<br/>
-		Time to Mitigation: 1h25m<br/>
-		Time to Recovery: 5m<br/>
-		</p>
-	</section>
-	<section>
-		<h3>root cause</h3>
-		<p class="fragment">prod default salts are <code>byte[15]</code> instead of <code>byte[16]</code></p>
-		<pre class="fragment" style="font-size: 80%">DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
-		<p class="fragment">15 '\0' and 1 '\'<p>
-		<p class="fragment">MySQL decide not to fail, and guessed differently on Windows and Linux</p>
-	</section>
-	<section>
-		<h3>learnings from NullBug</h3>
-		<p class="fragment">Time to detection</p>
-		<p class="fragment">always allow rollback</p>
-		<p class="fragment">prod is always different</p>
-	</section>
-</section>
+				</section>
+				<section>
+					<h3>what now?</h3>
+					<p>Timeline</p>
+					<p style="text-align: left;">
+						<span class="fragment">10:12 Migration script ran on prod DB</span><br />
+						<span class="fragment">10:20 code deployed to prod</span><br />
+						<span class="fragment">16:05 First impacted customer</span><br />
+						<span class="fragment">18:05 First impacted customer sends email</span><br />
+						<span class="fragment">18:10 Problem escalated to engineering team</span><br />
+						<span class="fragment">18:15 Decision made not to roll back</span><br />
+						<span class="fragment">19:20 Engineer repro on prod, problem identified</span><br />
+						<span class="fragment">19:30 Fixed migration script is code-reviewed</span><br />
+						<span class="fragment">19:35 Fixed migration script ran on prod DB</span><br />
+					</p>
+				</section>
+				<section>
+					<h3>how are we doing on time?</h3>
+					<p class="fragment" style="text-align: left;">
+						<span>10:20 code deployed to prod</span><br />
+						<span>16:05 First impacted customer</span><br />
+						<span>18:05 First impacted customer sends email</span><br />
+						<span>19:30 Fixed migration script is code-reviews</span><br />
+						<span>19:35 Fixed migration script ran on prod DB</span><br />
+					</p>
+					<p class="fragment" style="text-align: left;">
+						Time to Failure: 5h45m<br />
+						Time to Detection: 2h<br />
+						Time to Mitigation: 1h25m<br />
+						Time to Recovery: 5m<br />
+					</p>
+				</section>
+				<section>
+					<h3>root cause</h3>
+					<p class="fragment">prod default salts are <code>byte[15]</code> instead of <code>byte[16]</code>
+					</p>
+					<pre class="fragment" style="font-size: 80%">DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
+					<p class="fragment">15 '\0' and 1 '\'
+					<p>
+					<p class="fragment">MySQL decide not to fail, and guessed differently on Windows and Linux</p>
+				</section>
+				<section>
+					<h3>learnings from NullBug</h3>
+					<p class="fragment">Time to detection</p>
+					<p class="fragment">always allow rollback</p>
+					<p class="fragment">prod is always different</p>
+				</section>
+			</section>
 
-<section>
-	<section>
-		<h3>What did you say?</h3>
-		<p class="fragment">Large distributed system, stateful, load balanced</p>
-		<p class="fragment"><small>SeeAlso: A Gossip-Style Failure Detection Service</small></p>
-		<p class="fragment">6 years in production, millions TPS</p>
-		<p class="fragment">yup, per second</p>
-		<p class="fragment">Suddenly error rate goes up</p>
-		<p class="fragment">Soon after, instances in the cluster randomly segfault and restart</p>
-		<p class="fragment">Error rate goes further up</p>
-		<p class="fragment">OMG OMG OMG</p>
-	</section>
-	<section>
-		<h3>thou shalt gossip</h3>
-			<pre class="fragment collapsible" style="font-size: 80%">
+			<section>
+				<section>
+					<h3>What did you say?</h3>
+					<p class="fragment">Large distributed system, stateful, load balanced</p>
+					<p class="fragment"><small>SeeAlso: A Gossip-Style Failure Detection Service</small></p>
+					<p class="fragment">6 years in production, millions TPS</p>
+					<p class="fragment">yup, per second</p>
+					<p class="fragment">Suddenly error rate goes up</p>
+					<p class="fragment">Soon after, instances in the cluster randomly segfault and restart</p>
+					<p class="fragment">Error rate goes further up</p>
+					<p class="fragment">OMG OMG OMG</p>
+				</section>
+				<section>
+					<h3>thou shalt gossip</h3>
+					<pre class="fragment collapsible" style="font-size: 80%">
 	host01.mycompany.com 10
 	host06.mycompany.com 90
 	host07.mycompany.com 30
 	host10.mycompany.com 31
 	host02.mycompany.com 35</pre>
-			<pre class="fragment" style="font-size: 80%">
+					<pre class="fragment" style="font-size: 80%">
 	?ost01.mycompany.com 10
 	host06.mycompany.com 90
 	host07.mycompany.com 30
 	host10.mycompany.com 31
 	host02.mycompany.com 35</pre>
-		<p class="fragment">When an instance is selected, a quick format validation is executed.</p>
-		<p class="fragment">When invalid, deletion code is calling <code>free</code> twice on the same pointer (C++ FTW). Segfault follows.</p>
-	</section>
-	<section>
-		<h3>show me the check(sum)</h3>
-		<pre class="fragment collapsible" style="font-size: 80%">
+					<p class="fragment">When an instance is selected, a quick format validation is executed.</p>
+					<p class="fragment">When invalid, deletion code is calling <code>free</code> twice on the same
+						pointer (C++ FTW). Segfault follows.</p>
+				</section>
+				<section>
+					<h3>show me the check(sum)</h3>
+					<pre class="fragment collapsible" style="font-size: 80%">
 checksum=0123456789abcdef
 
 if headers.containsKey("checksum") ...
 else whatever</pre>
-		<pre class="fragment" style="font-size: 80%">
+					<pre class="fragment" style="font-size: 80%">
 ?hecksum=0123456789abcdef</pre>
-		<p class="fragment">Zero downtime interim code was never removed</p>
-	</section>
-	<section>
-		<h3>Why?</h3>
-		<ul>
-			<li>Why did error rate go up?</li>
-			<li>Why did hosts restart?</li>
-			<li>Why was memory released?</li>
-			<li>Why was there a broken hostname?</li>
-			<li>Why wasn't the broken message rejected?</li>
-			<li>Why did the server accept a missing checksum?</li>
-			<li>Why wasn't the impact limited to a single host?</li>
-		</ul>
-	</section>
-	<section>
-		<h3>impact</h3>
-		<p class="fragment">
-			Single NIC failure on a single host - caused worldwide impact on multiple subsystems
-		</p>
-	</section>
-	<section>
-		<h3>how are we doing on time?</h3>
-		<p class="fragment" style="text-align: left;">
-		Time to Failure: 6 <i><b>years</b></i><br/>
-		Time to Detection: 1m<br/>
-		Time to Mitigation: 1h<br/>
-		Time to Recovery: 4h<br/>
-		</p>
-	</section>
-	<section>
-		<h3>learnings from BitBug</h3>
-		<p class="fragment">Time to detection</p>
-		<p class="fragment">Self replicating bugs</p>
-		<p class="fragment">Never tested scenarios</p>
-	</section>
-</section>
-<section>
-	<h3>now what?</h3>
-</section>
-<section>
-	<h3>metrics</h3>
-	<p class="fragment">figure out the most important business metrics</p>
-	<p class="fragment">figure out thresholds</p>
-	<p class="fragment">Alarm on the thresholds</p>
-	<p class="fragment">Auto-rollback on alarms</p>
-	<p class="fragment">Look at trends, DoD, WoW, YoY</p>
-</section>
-<section>
-	<h3>early</h3>
-	<p class="fragment">Consistency Check - replay traffic comparing results of Beta and Prod</p>
-	<p class="fragment">Delta comparison - replay traffic comparing key metrics (latencies, CPU utilization, GC profile etc) on Beta vs Prod
-</section>
-<section>
-	<h3>Blast radius reduction</h3>
-	<p class="fragment">Regionalize (subsystems, locations, markets)</p>
-	<p class="fragment">Deployment Windows - identify low-traffic o'clock</p>
-	<p class="fragment">Canary deployments - deploy to one (or few) instances, compare metrics for a while</p>
-	<p class="fragment">Controlled rollout - deploy to X% at the time, auto-rollback on alarms <br/><span style="font-size: 70%">easier during low-traffic windows</span></p>
-</section>
-<section>
-	<h3>off the beaten track</h3>
-	<p class="fragment collapsible"><q>We don't have many tests. I'm not advocating that you shouldn't put in tests. [The reason we can get away with this] is that we have a great community. So instead of having automated test we have automated human tests.</q></p>
-	<p class="fragment collapsible">But I'm not stack overflow ... </p>
-	<p class="fragment">Synthetic transactions - emulate users, products and interactions. Define success and failure metrics</p>
-	<p class="fragment"><img style="height: : 200px;" src="my/test-asin.jpg"></p>
-</section>
-<section>
-	<h3>Let's play</h3>
-	<p class="fragment collapsible">
-	<q>In the early 2000s, Amazon created GameDay, a program designed to increase resilience by purposely injecting major failures into critical systems semi-regularly to discover flaws and subtle dependencies. Basically, a GameDay exercise tests a company's <code>systems</code>, <code>software</code>, and <code>people</code> in the course of preparing for a response to a disastrous event.</q></p>
-	<q class="fragment">DiRT was developed to find vulnerabilities in critical systems and business processes by intentionally causing failures in them, and to fix them before such failures happen in an uncontrolled manner. DiRT tests both Google's technical robustness, by breaking <code>live systems</code>, and our operational resilience by explicitly preventing critical <code>personnel</code>, area experts, and leaders from participating.</q>
-</section>
-<section>
-	<h3>Notomatic</h3>
-	<p class="fragment">Change management process - a "code" reviewed document</p>
-	<p class="fragment">Pre-mortem</p>
-	<blockquote class="fragment">I play a little game. I assume the worst<br/><small><i>Baelish, P.</i></small></blockquote>
-	<p class="fragment">Clear rollback criteria</p>
-	<p class="fragment">Pre-reviewed scripts</p>
-	<p class="fragment">Any monkey can execute or take over</p>
-</section>
-<section>
-	<h3>Analysis</h3>
-	<p class="fragment">Correction Of Errors</p>
-	<p class="fragment">Emphasis on learning, not on finger-pointing</p>
-	<p class="fragment">five whys?</p>
-	<p class="fragment">"how would you cut impact in half?"</p>
-	<p class="fragment">"how would you cut detection in half?"</p>
-	<p class="fragment"><q>best learnings - read COEs</q></p>
-</section>
-<section>
-        <p>@kenegozi<br/>
-        <a href="http://kenegozi.com">http://kenegozi.com</a><br/>
-        <a href="http://kenegozi.com/talks">http://kenegozi.com/talks</a><br/>
-        </p>
-</section>
-<section>
-	<h3>recap</h3>
-	<ul style="margin: 0">
-	<li class="fragment">automate what you can, vet what you cannot</li>
-	<li class="fragment">reduce time to detection</li>
-	<li class="fragment">rollbackability is a feature</li>
-	<li class="fragment">reduce blast radius</li>
-	<li class="fragment">always be shipping!</li>
-	</ul>
-</section>
-<section>
-        <h1>}</h1>
-</section>
-			</div>
+					<p class="fragment">Zero downtime interim code was never removed</p>
+				</section>
+				<section>
+					<h3>Why?</h3>
+					<ul>
+						<li>Why did error rate go up?</li>
+						<li>Why did hosts restart?</li>
+						<li>Why was memory released?</li>
+						<li>Why was there a broken hostname?</li>
+						<li>Why wasn't the broken message rejected?</li>
+						<li>Why did the server accept a missing checksum?</li>
+						<li>Why wasn't the impact limited to a single host?</li>
+					</ul>
+				</section>
+				<section>
+					<h3>impact</h3>
+					<p class="fragment">
+						Single NIC failure on a single host - caused worldwide impact on multiple subsystems
+					</p>
+				</section>
+				<section>
+					<h3>how are we doing on time?</h3>
+					<p class="fragment" style="text-align: left;">
+						Time to Failure: 6 <i><b>years</b></i><br />
+						Time to Detection: 1m<br />
+						Time to Mitigation: 1h<br />
+						Time to Recovery: 4h<br />
+					</p>
+				</section>
+				<section>
+					<h3>learnings from BitBug</h3>
+					<p class="fragment">Time to detection</p>
+					<p class="fragment">Self replicating bugs</p>
+					<p class="fragment">Never tested scenarios</p>
+				</section>
+			</section>
+			<section>
+				<h3>now what?</h3>
+			</section>
+			<section>
+				<h3>metrics</h3>
+				<p class="fragment">figure out the most important business metrics</p>
+				<p class="fragment">figure out thresholds</p>
+				<p class="fragment">Alarm on the thresholds</p>
+				<p class="fragment">Auto-rollback on alarms</p>
+				<p class="fragment">Look at trends, DoD, WoW, YoY</p>
+			</section>
+			<section>
+				<h3>early</h3>
+				<p class="fragment">Consistency Check - replay traffic comparing results of Beta and Prod</p>
+				<p class="fragment">Delta comparison - replay traffic comparing key metrics (latencies, CPU utilization,
+					GC profile etc) on Beta vs Prod
+			</section>
+			<section>
+				<h3>Blast radius reduction</h3>
+				<p class="fragment">Regionalize (subsystems, locations, markets)</p>
+				<p class="fragment">Deployment Windows - identify low-traffic o'clock</p>
+				<p class="fragment">Canary deployments - deploy to one (or few) instances, compare metrics for a while
+				</p>
+				<p class="fragment">Controlled rollout - deploy to X% at the time, auto-rollback on alarms <br /><span
+						style="font-size: 70%">easier during low-traffic windows</span></p>
+			</section>
+			<section>
+				<h3>off the beaten track</h3>
+				<p class="fragment collapsible"><q>We don't have many tests. I'm not advocating that you shouldn't put
+						in tests. [The reason we can get away with this] is that we have a great community. So instead
+						of having automated test we have automated human tests.</q></p>
+				<p class="fragment collapsible">But I'm not stack overflow ... </p>
+				<p class="fragment">Synthetic transactions - emulate users, products and interactions. Define success
+					and failure metrics</p>
+				<p class="fragment"><img style="height: : 200px;" src="my/test-asin.jpg"></p>
+			</section>
+			<section>
+				<h3>Let's play</h3>
+				<p class="fragment collapsible">
+					<q>In the early 2000s, Amazon created GameDay, a program designed to increase resilience by
+						purposely injecting major failures into critical systems semi-regularly to discover flaws and
+						subtle dependencies. Basically, a GameDay exercise tests a company's <code>systems</code>,
+						<code>software</code>, and <code>people</code> in the course of preparing for a response to a
+						disastrous event.</q></p>
+				<q class="fragment">DiRT was developed to find vulnerabilities in critical systems and business
+					processes by intentionally causing failures in them, and to fix them before such failures happen in
+					an uncontrolled manner. DiRT tests both Google's technical robustness, by breaking
+					<code>live systems</code>, and our operational resilience by explicitly preventing critical
+					<code>personnel</code>, area experts, and leaders from participating.</q>
+			</section>
+			<section>
+				<h3>Notomatic</h3>
+				<p class="fragment">Change management process - a "code" reviewed document</p>
+				<p class="fragment">Pre-mortem</p>
+				<blockquote class="fragment">I play a little game. I assume the worst<br /><small><i>Baelish,
+							P.</i></small></blockquote>
+				<p class="fragment">Clear rollback criteria</p>
+				<p class="fragment">Pre-reviewed scripts</p>
+				<p class="fragment">Any monkey can execute or take over</p>
+			</section>
+			<section>
+				<h3>Analysis</h3>
+				<p class="fragment">Correction Of Errors</p>
+				<p class="fragment">Emphasis on learning, not on finger-pointing</p>
+				<p class="fragment">five whys?</p>
+				<p class="fragment">"how would you cut impact in half?"</p>
+				<p class="fragment">"how would you cut detection in half?"</p>
+				<p class="fragment"><q>best learnings - read COEs</q></p>
+			</section>
+			<section>
+				<p>@kenegozi<br />
+					<a href="http://kenegozi.com">http://kenegozi.com</a><br />
+					<a href="http://kenegozi.com/talks">http://kenegozi.com/talks</a><br />
+				</p>
+			</section>
+			<section>
+				<h3>recap</h3>
+				<ul style="margin: 0">
+					<li class="fragment">automate what you can, vet what you cannot</li>
+					<li class="fragment">reduce time to detection</li>
+					<li class="fragment">rollbackability is a feature</li>
+					<li class="fragment">reduce blast radius</li>
+					<li class="fragment">always be shipping!</li>
+				</ul>
+			</section>
+			<section>
+				<h1>}</h1>
+			</section>
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
-				fragments: true,
-				minScale: 1,
-				maxScale: 1,
-				transition: 'fade',
-				transitionSpeed: 'fast',
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
+			fragments: true,
+			minScale: 1,
+			maxScale: 1,
+			transition: 'fade',
+			transitionSpeed: 'fast',
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
 </html>
