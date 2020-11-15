@@ -30,15 +30,22 @@
 	<div class="reveal">
 		<div class="slides">
 			<section class="intro">
-
-				<h1>How to write Bad Software</h1>
+				<h1>
+					<span>How to write Bad Software</span>
+				</h1>
+				<img src="my/bug-4297771_640.jpg" style="border: none;" />
+				<!-- <h1 style="position: absolute;top:20px; right:40px; width:250px;">
+					<span>How to write Bad Software</span>
+				</h1> -->
 			</section>
 
 			<section>
-				<h3>write</h3>
+				<h3>Write</h3>
 				<p class="fragment">Social networks</p>
+				<p class="fragment">Search engines</p>
 				<p class="fragment">E-Commerce</p>
-				<p class="fragment">Collaboration tools</p>
+				<p class="fragment">Productivity tools</p>
+				<p class="fragment">Cloud services</p>
 				<p class="fragment">Games</p>
 				<p class="fragment">Spaceships</p>
 				<p class="fragment">Pacemakers</p>
@@ -60,7 +67,11 @@
 				</section>
 				<section>
 					<h3>solution</h3>
-					<p class="fragment collapsible">Make code, no bugs!</p>
+					<p class="fragment collapsible">
+						Make code, no bugs!
+						<br />
+						<img src="my/thumb-328420_640.jpg" style="height: 350px;" />
+					</p>
 					<p class="fragment" style="text-decoration: line-through;">Make code, no bugs!</p>
 					<img class="fragment" style="height:350px" src="my/software-built-by-humans.jpg" />
 				</section>
@@ -106,37 +117,64 @@
 					<h3>Hush</h3>
 					<div style="min-height: 350px">
 						<pre class="fragment collapsible" style="font-size: 80%">
-if (u.pwd == pwd) {
-	return "Collect 200!"
-}
+function auth(pwd) {
+	if (u.pwd == pwd) {
+		return "Collect 200!"
+	}
 
-return "Go to jail"</pre>
+	return "Go to jail"
+}</pre>
 						<pre class="fragment collapsible" style="font-size: 80%">
-if (u.hpwd == hash(pwd)) {
-	return "Collect 200!"
-}
+function auth(pwd) {
+	if (u.pwd == <span class="high">hash(</span>pwd<span class="high">)</span>) {
+		return "Collect 200!"
+	}
 
-return "Go to jail"</pre>
+	return "Go to jail"
+}</pre>
 						<p class="fragment collapsible">
 							<img style="height: 300px" src="my/salt.jpg" />
 						</p>
 						<pre class="fragment collapsible" style="font-size: 80%">
-if (u.hpwd == hash(pwd + u.salt)) {
-	return "Collect 200!"
+function newUser(...) {
+	...
+	<span class="high">u.salt = generateVeryRandomAndSecureSalt()</span>
 }
 
-return "Go to jail"</pre>
+function auth(pwd) {
+	if (u.pwd == hash(pwd<span class="high"> + u.salt</span>)) {
+		return "Collect 200!"
+	}
+
+	return "Go to jail"
+}</pre>
 						<p class="fragment collapsible">
-							are you an existing user?<br />
+							are you an existing user?
+						</p>
+						<p class="fragment collapsible">
+							are you an existing user?
 							<br />
-							STOP!
+							<img src="my/sign-1732791_640.jpg" style="height: 350px;" />
 						</p>
 						<pre class="fragment collapsible" style="font-size: 80%">
 if (u.hpwd == hash(pwd + u.salt)) {
 	return "Collect 200!"
 }
 
-if (u.salt == new byte[16] && u.hpwd == hash(pwd)) {
+<span class="high">if (u.salt == new byte[16] && u.hpwd == hash(pwd)) {
+	u.salt = genRandomBytes(16)
+	u.hpwd = hash(pwd + u.salt)
+	u.save()
+	return "Collect 200!"
+}</span>
+
+return "Go to jail"</pre>
+						<pre class="fragment collapsible" style="font-size: 80%">
+if (u.hpwd == hash(pwd + u.salt)) {
+	return "Collect 200!"
+}
+
+if (u.salt == <span class="high">new byte[16]</span> && u.hpwd == hash(pwd)) {
 	u.salt = genRandomBytes(16)
 	u.hpwd = hash(pwd + u.salt)
 	u.save()
@@ -144,7 +182,6 @@ if (u.salt == new byte[16] && u.hpwd == hash(pwd)) {
 }
 
 return "Go to jail"</pre>
-
 						<pre class="fragment collapsible" style="font-size: 80%">
 UPDATE TABLE users
 ADD COLUMN salt 
@@ -158,9 +195,11 @@ DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
 							and in QA and Staging!
 						</p>
 						<p class="fragment collapsible">
+							are you an existing user?
+						</p>
+						<p class="fragment collapsible">
 							are you an existing user?<br />
-							<br />
-							STOP!
+							<img src="my/lock-3093182_640.jpg" style="height: 350px;" />
 						</p>
 
 					</div>
@@ -217,50 +256,96 @@ DEFAULT '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\'</pre>
 			<section>
 				<section>
 					<h3>What did you say?</h3>
-					<p class="fragment">Large distributed system, stateful, load balanced</p>
-					<p class="fragment"><small>SeeAlso: A Gossip-Style Failure Detection Service</small></p>
-					<p class="fragment">6 years in production, millions TPS</p>
-					<p class="fragment">yup, per second</p>
-					<p class="fragment">Suddenly error rate goes up</p>
-					<p class="fragment">Soon after, instances in the cluster randomly segfault and restart</p>
-					<p class="fragment">Error rate goes further up</p>
-					<p class="fragment">OMG OMG OMG</p>
+					<p class="fragment">Global database, years in production</p>
+					<p class="fragment">10s of thousands nodes</p>
+					<p class="fragment">10s millions queries per second</p>
 				</section>
 				<section>
 					<h3>thou shalt gossip</h3>
 					<pre class="fragment collapsible" style="font-size: 80%">
-	host01.mycompany.com 10
-	host06.mycompany.com 90
-	host07.mycompany.com 30
-	host10.mycompany.com 31
-	host02.mycompany.com 35</pre>
+host01.mycompany.com 10
+host06.mycompany.com 90
+host07.mycompany.com 30
+host10.mycompany.com 31
+host02.mycompany.com 35</pre>
 					<pre class="fragment" style="font-size: 80%">
-	?ost01.mycompany.com 10
-	host06.mycompany.com 90
-	host07.mycompany.com 30
-	host10.mycompany.com 31
-	host02.mycompany.com 35</pre>
-					<p class="fragment">When an instance is selected, a quick format validation is executed.</p>
-					<p class="fragment">When invalid, deletion code is calling <code>free</code> twice on the same
-						pointer (C++ FTW). Segfault follows.</p>
+<span class="high">?</span>ost01.mycompany.com 10
+host06.mycompany.com 90
+host07.mycompany.com 30
+host10.mycompany.com 31
+host02.mycompany.com 35</pre>
+					<p class="fragment">No worries, bad entries are deleted</p>
+					<p class="fragment">Unless the first entry is bad 🐛🐛🐛</p>
+					<p class="fragment">many years, many nodes</p>
 				</section>
 				<section>
 					<h3>show me the check(sum)</h3>
-					<pre class="fragment collapsible" style="font-size: 80%">
+					<div style="min-height: 350px">
+						<pre class="fragment collapsible" style="font-size: 80%">
+checksum=0123456789abcdef</pre>
+						<pre class="fragment collapsible" style="font-size: 80%">
 checksum=0123456789abcdef
 
-if headers.containsKey("checksum") ...
-else whatever</pre>
-					<pre class="fragment" style="font-size: 80%">
-?hecksum=0123456789abcdef</pre>
-					<p class="fragment">Zero downtime interim code was never removed</p>
+// backward compatibility?</pre>
+						<pre class="fragment collapsible" style="font-size: 80%">
+checksum=0123456789abcdef
+
+// backward compatibility FTW
+if !headers.containsKey("checksum") {
+	return "OK"
+}</pre>
+						<pre class="fragment collapsible" style="font-size: 80%">
+checksum=0123456789abcdef
+
+host01.mycompany.com 10
+host06.mycompany.com 90
+host07.mycompany.com 30
+host10.mycompany.com 31
+host02.mycompany.com 35</pre>
+						<pre class="fragment collapsible" style="font-size: 80%">
+checksum=0123456789abcdef
+
+host01.mycompany.com 10
+<span class="high">?</span>ost06.mycompany.com 90
+host07.mycompany.com 30
+host10.mycompany.com 31
+host02.mycompany.com 35</pre>
+						<pre class="fragment collapsible" style="font-size: 80%">
+checksum=0123456789abcdef
+
+<span class="high">?</span>ost01.mycompany.com 10
+host06.mycompany.com 90
+host07.mycompany.com 30
+host10.mycompany.com 31
+host02.mycompany.com 35</pre>
+						<pre class="fragment collapsible" style="font-size: 80%">
+check<span class="high">?</span>um=0123456789abcdef
+
+host01.mycompany.com 10
+host06.mycompany.com 90
+host07.mycompany.com 30
+host10.mycompany.com 31
+host02.mycompany.com 35</pre>
+						<p class="fragment collapsible">Backward compatibility FTW?</p>
+						<pre class="fragment collapsible" style="font-size: 80%">
+check<span class="high">?</span>um=0123456789abcdef
+
+<span class="high">?</span>ost01.mycompany.com 10
+host06.mycompany.com 90
+host07.mycompany.com 30
+host10.mycompany.com 31
+host02.mycompany.com 35</pre>
+						<p class="fragment collapsible"><img src="my/cube-3116778_640.jpg" style="height: 450px;" /></p>
+						<p class="fragment">10s of thousands nodes</p>
+						<p class="fragment"><img src="my/terrorist-2481808_640.jpg" style="height: 450px;" /></p>
+					</div>
 				</section>
 				<section>
 					<h3>Why?</h3>
 					<ul>
 						<li>Why did error rate go up?</li>
 						<li>Why did hosts restart?</li>
-						<li>Why was memory released?</li>
+						<li>Why was memory released twice?</li>
 						<li>Why was there a broken hostname?</li>
 						<li>Why wasn't the broken message rejected?</li>
 						<li>Why did the server accept a missing checksum?</li>
@@ -270,13 +355,16 @@ else whatever</pre>
 				<section>
 					<h3>impact</h3>
 					<p class="fragment">
-						Single NIC failure on a single host - caused worldwide impact on multiple subsystems
+						Single NIC failure on a single host - caused worldwide downtime to multiple subsystems
+					</p>
+					<p class="fragment">
+						<img src="my/kermit-1767555_640.jpg" style="height: 350px;" />
 					</p>
 				</section>
 				<section>
 					<h3>how are we doing on time?</h3>
 					<p class="fragment" style="text-align: left;">
-						Time to Failure: 6 <i><b>years</b></i><br />
+						Time to Failure: many <i><b>years</b></i><br />
 						Time to Detection: 1m<br />
 						Time to Mitigation: 1h<br />
 						Time to Recovery: 4h<br />
@@ -285,8 +373,9 @@ else whatever</pre>
 				<section>
 					<h3>learnings from BitBug</h3>
 					<p class="fragment">Time to detection</p>
-					<p class="fragment">Self replicating bugs</p>
 					<p class="fragment">Never tested scenarios</p>
+					<p class="fragment">Technical debt</p>
+					<p class="fragment">Odds</p>
 				</section>
 			</section>
 			<section>
@@ -294,8 +383,8 @@ else whatever</pre>
 			</section>
 			<section>
 				<h3>metrics</h3>
-				<p class="fragment">figure out the most important business metrics</p>
-				<p class="fragment">figure out thresholds</p>
+				<p class="fragment">Figure out the most important business metrics</p>
+				<p class="fragment">Figure out thresholds</p>
 				<p class="fragment">Alarm on the thresholds</p>
 				<p class="fragment">Auto-rollback on alarms</p>
 				<p class="fragment">Look at trends, DoD, WoW, YoY</p>
