@@ -62,7 +62,7 @@
 			</section>
 			<section>
 				<section>
-					<h3>Why do systems fail?</h3>
+					<h3>What makes software bad?</h3>
 					<img class="fragment" style="height:350px" src="my/bug.jpg" />
 				</section>
 				<section>
@@ -90,31 +90,43 @@
 							<span class="fragment">race condition!</span>&nbsp;&nbsp;
 							<span class="fragment">who's there?</span>
 						</p>
-						<p>
-							<span class="fragment">OS update</span><br />
-							<span class="fragment">self-replicating bug</span><br />
-							<span class="fragment">SSL expiration</span><br />
+						<p class="fragment">OS update</p>
+						<p class="fragment">SSL expiration</p>
 						</p>
 						<p class="fragment collapsible">
 							<q>“Windows Azure Storage experienced a worldwide outage impacting HTTPS traffic due to an
 								expired SSL certificate,” Martin reported. “HTTP traffic was unaffected but the event
 								impacted a number of Windows Azure services that are dependent on Storage.”</q>
 						</p>
-						<p class="fragment">
-							<img style="height:200px" src="my/worked-on-my-machine.jpg" />
-						</p>
+						<p class="fragment">Environment mismatch</p>
+						<p class="fragment">Really bad luck</p>
 					</div>
 				</section>
 				<section>
-					<p class="what-if-img">
+					<p class="fragment collapsible">
+						<img style="height:500px" src="my/worked-on-my-machine.jpg" />
+					</p>
+					<p class="fragment">
 						<img style="height:500px" src="my/what-if.jpg" />
 					</p>
+					<aside class="notes">
+						The common thread is "worked on my machine"
+						Until, of course, something happens in production that makes you question life, the universe,
+						and everything
+					</aside>
 				</section>
 			</section>
-			<!-- LIKE -->
 			<section>
 				<section>
 					<h3>Hush</h3>
+					<aside class="notes">
+						I hope that people do not implement their own authentication code in this day and age. But long
+						ago, we all did.
+						This is one such story.<br />
+						<br />
+						if you squint you'd see that the password is stored in cleartext!
+
+					</aside>
 					<div style="min-height: 350px">
 						<pre class="fragment collapsible" style="font-size: 80%">
 function auth(pwd) {
