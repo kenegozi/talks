@@ -21,8 +21,13 @@
     border: none;
 }
 
-ul li {
-	list-style-type: none;
+.reveal ul {
+    margin-left: 0;
+}
+
+.reveal ul li {
+    list-style-type: none;
+    text-align: center;
 }
 
 .reveal pre {

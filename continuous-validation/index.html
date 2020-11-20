@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>System Validation</title>
+	<title>Bad Software</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css">
@@ -30,35 +30,52 @@
 	<div class="reveal">
 		<div class="slides">
 			<section class="intro">
-				<h1>
-					<span>How to write Bad Software</span>
-				</h1>
-				<img src="my/bug-4297771_640.jpg" style="border: none;" />
-				<!-- <h1 style="position: absolute;top:20px; right:40px; width:250px;">
-					<span>How to write Bad Software</span>
-				</h1> -->
-			</section>
+				<h1>How to write Bad Software</h1>
+				<aside class="notes">
+					Today we talk about bad software and its implications, and I will share some stories
+					of wonderful outages. <br />
+					As a constant learner I have read about some publicly shared incidents.<br />
+					As a consultant I witnessed some incidents first hand. <br />
 
+					I have been writing software for many years, launched and maintained massive systems
+					for some of the largest technology stacks on the planet. And as a
+					practitioner I was in charge of and even directly caused some wonderful outage ...
+				</aside>
+				<img src="my/bug-4297771_640.jpg" style="border: none;" />
+			</section>
+			<section>
+				<h2>{</h2>
+			</section>
 			<section>
 				<h3>Write</h3>
-				<p class="fragment">Social networks</p>
-				<p class="fragment">Search engines</p>
-				<p class="fragment">E-Commerce</p>
-				<p class="fragment">Productivity tools</p>
-				<p class="fragment">Cloud services</p>
-				<p class="fragment">Games</p>
-				<p class="fragment">Spaceships</p>
-				<p class="fragment">Pacemakers</p>
-				<p class="fragment">Software</p>
+				<aside class="notes">
+					Here are some example for things that are powered by software that we may have writtten
+				</aside>
+				<ul>
+					<li>Social networks</li>
+					<li>Search engines</li>
+					<li>E-Commerce</li>
+					<li>Productivity tools</li>
+					<li>Cloud services</li>
+					<li>Games</li>
+					<li>Intelligence</li>
+					<li>Spaceships</li>
+					<li>Pacemakers</li>
+					<li>Software</li>
+				</ul>
 			</section>
 			<section>
-				<h3>bad software</h3>
-				<p class="fragment">lose money</p>
-				<p class="fragment">lose information</p>
-				<p class="fragment">lose trust</p>
-				<p class="fragment">lose sleep</p>
-				<p class="fragment">lose life</p>
-				<p class="fragment">lose</p>
+				<h3>Bad</h3>
+				<aside class="notes">
+					but what happenes when the software the we write go bad?
+				</aside>
+				<ul>
+					<li>lose information</li>
+					<li>lose trust</li>
+					<li>lose money</li>
+					<li>lose sleep</li>
+					<li>lose life</li>
+				</ul>
 			</section>
 			<section>
 				<section>
@@ -73,14 +90,16 @@
 						<img src="my/thumb-328420_640.jpg" style="height: 350px;" />
 					</p>
 					<p class="fragment" style="text-decoration: line-through;">Make code, no bugs!</p>
-					<img class="fragment" style="height:350px" src="my/software-built-by-humans.jpg" />
+					<img class="fragment" style="height:450px" src="my/audience-828584_1280.jpg" />
 				</section>
 				<section>
 					<h3>solution</h3>
-					<p class="fragment">test</p>
-					<p class="fragment">unit test</p>
-					<p class="fragment">integration test</p>
-					<p class="fragment">formal validation</p>
+					<ul class="fragment">
+						<li>test</li>
+						<li>unit test</li>
+						<li>integration test</li>
+						<li>formal validation</li>
+					</ul>
 				</section>
 				<section>
 					<h3>however</h3>
@@ -92,11 +111,6 @@
 						</p>
 						<p class="fragment">OS update</p>
 						<p class="fragment">SSL expiration</p>
-						</p>
-						<p class="fragment collapsible">
-							<q>“Windows Azure Storage experienced a worldwide outage impacting HTTPS traffic due to an
-								expired SSL certificate,” Martin reported. “HTTP traffic was unaffected but the event
-								impacted a number of Windows Azure services that are dependent on Storage.”</q>
 						</p>
 						<p class="fragment">Environment mismatch</p>
 						<p class="fragment">Really bad luck</p>
@@ -138,7 +152,7 @@ function auth(pwd) {
 }</pre>
 						<pre class="fragment collapsible" style="font-size: 80%">
 function auth(pwd) {
-	if (u.pwd == <span class="high">hash(</span>pwd<span class="high">)</span>) {
+	if (u.<span class="high">h</span>pwd == <span class="high">hash(</span>pwd<span class="high">)</span>) {
 		return "Collect 200!"
 	}
 
@@ -154,7 +168,7 @@ function newUser(...) {
 }
 
 function auth(pwd) {
-	if (u.pwd == hash(pwd<span class="high"> + u.salt</span>)) {
+	if (u.hpwd == hash(pwd<span class="high"> + u.salt</span>)) {
 		return "Collect 200!"
 	}
 
@@ -174,7 +188,7 @@ if (u.hpwd == hash(pwd + u.salt)) {
 }
 
 <span class="high">if (u.salt == new byte[16] && u.hpwd == hash(pwd)) {
-	u.salt = genRandomBytes(16)
+	u.salt = generateVeryRandomAndSecureSalt(16)
 	u.hpwd = hash(pwd + u.salt)
 	u.save()
 	return "Collect 200!"
@@ -187,7 +201,7 @@ if (u.hpwd == hash(pwd + u.salt)) {
 }
 
 if (u.salt == <span class="high">new byte[16]</span> && u.hpwd == hash(pwd)) {
-	u.salt = genRandomBytes(16)
+	u.salt = generateVeryRandomAndSecureSalt(16)
 	u.hpwd = hash(pwd + u.salt)
 	u.save()
 	return "Collect 200!"
@@ -398,14 +412,7 @@ host02.mycompany.com 35</pre>
 				<p class="fragment">Figure out the most important business metrics</p>
 				<p class="fragment">Figure out thresholds</p>
 				<p class="fragment">Alarm on the thresholds</p>
-				<p class="fragment">Auto-rollback on alarms</p>
-				<p class="fragment">Look at trends, DoD, WoW, YoY</p>
-			</section>
-			<section>
-				<h3>early</h3>
-				<p class="fragment">Consistency Check - replay traffic comparing results of Beta and Prod</p>
-				<p class="fragment">Delta comparison - replay traffic comparing key metrics (latencies, CPU utilization,
-					GC profile etc) on Beta vs Prod
+				<p class="fragment">Watch trends, DoD, WoW, YoY, and refine</p>
 			</section>
 			<section>
 				<h3>Blast radius reduction</h3>
@@ -413,8 +420,25 @@ host02.mycompany.com 35</pre>
 				<p class="fragment">Deployment Windows - identify low-traffic o'clock</p>
 				<p class="fragment">Canary deployments - deploy to one (or few) instances, compare metrics for a while
 				</p>
-				<p class="fragment">Controlled rollout - deploy to X% at the time, auto-rollback on alarms <br /><span
+				<p class="fragment">Controlled rollout - deploy to X% at the time <br /><span
 						style="font-size: 70%">easier during low-traffic windows</span></p>
+				<p class="fragment">Auto-rollback on alarms</p>
+			</section>
+			<section>
+				<h3>replay</h3>
+				<p class="fragment">Functional - comparing results of Beta vs Prod</p>
+				<p class="fragment">Non functional - comparing key metrics (latencies, CPU utilization,
+					GC profile etc) of Beta vs Prod
+			</section>
+			<section>
+				<h3>Notomatic</h3>
+				<p class="fragment">Change management process - a "code" reviewed document</p>
+				<p class="fragment">Pre-mortem</p>
+				<blockquote class="fragment">I play a little game. I assume the worst<br /><small><i>Baelish,
+							P.</i></small></blockquote>
+				<p class="fragment">Clear rollback criteria</p>
+				<p class="fragment">Pre-reviewed scripts</p>
+				<p class="fragment">Any monkey can execute or take over</p>
 			</section>
 			<section>
 				<h3>off the beaten track</h3>
@@ -424,7 +448,7 @@ host02.mycompany.com 35</pre>
 				<p class="fragment collapsible">But I'm not stack overflow ... </p>
 				<p class="fragment">Synthetic transactions - emulate users, products and interactions. Define success
 					and failure metrics</p>
-				<p class="fragment"><img style="height: : 200px;" src="my/test-asin.jpg"></p>
+				<p class="fragment"><img style="height: 200px;" src="my/test-asin.jpg"></p>
 			</section>
 			<section>
 				<h3>Let's play</h3>
@@ -441,23 +465,13 @@ host02.mycompany.com 35</pre>
 					<code>personnel</code>, area experts, and leaders from participating.</q>
 			</section>
 			<section>
-				<h3>Notomatic</h3>
-				<p class="fragment">Change management process - a "code" reviewed document</p>
-				<p class="fragment">Pre-mortem</p>
-				<blockquote class="fragment">I play a little game. I assume the worst<br /><small><i>Baelish,
-							P.</i></small></blockquote>
-				<p class="fragment">Clear rollback criteria</p>
-				<p class="fragment">Pre-reviewed scripts</p>
-				<p class="fragment">Any monkey can execute or take over</p>
-			</section>
-			<section>
 				<h3>Analysis</h3>
-				<p class="fragment">Correction Of Errors</p>
+				<p class="fragment">Post mortem</p>
 				<p class="fragment">Emphasis on learning, not on finger-pointing</p>
-				<p class="fragment">five whys?</p>
+				<p class="fragment">Five+ whys?</p>
 				<p class="fragment">"how would you cut impact in half?"</p>
 				<p class="fragment">"how would you cut detection in half?"</p>
-				<p class="fragment"><q>best learnings - read COEs</q></p>
+				<p class="fragment"><q>best learnings - read Post Mortems</q></p>
 			</section>
 			<section>
 				<p>@kenegozi<br />
@@ -465,7 +479,7 @@ host02.mycompany.com 35</pre>
 					<a href="http://kenegozi.com/talks">http://kenegozi.com/talks</a><br />
 				</p>
 			</section>
-			<section>
+			<!-- <section>
 				<h3>recap</h3>
 				<ul style="margin: 0">
 					<li class="fragment">automate what you can, vet what you cannot</li>
@@ -474,9 +488,9 @@ host02.mycompany.com 35</pre>
 					<li class="fragment">reduce blast radius</li>
 					<li class="fragment">always be shipping!</li>
 				</ul>
-			</section>
+			</section> -->
 			<section>
-				<h1>}</h1>
+				<h2>}</h2>
 			</section>
 		</div>
 	</div>
